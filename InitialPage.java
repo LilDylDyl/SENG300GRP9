@@ -48,23 +48,8 @@ public class InitialPage extends JFrame {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		
-		JButton btnNewButton = new JButton("I'm a Doctor");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String case1 = btnNewButton.getText();
-				if (case1.equals("I'm a Doctor")) {
-					JOptionPane.showMessageDialog(frame, "Welcome to our Hospital Management System!");
-					LoginPage projectlogin1 = new LoginPage();
-					projectlogin1.setVisible(true);
-				}
-			}
-		});
-		btnNewButton.setBounds(144, 83, 153, 29);
-		frame.getContentPane().add(btnNewButton);
-		
-		JButton button = new JButton("I'm a Patient");
+
+		JButton button = new JButton("Login");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LoginPage projectlogin2 = new LoginPage();
@@ -73,25 +58,25 @@ public class InitialPage extends JFrame {
 		});
 		button.setBounds(144, 124, 153, 29);
 		frame.getContentPane().add(button);
-		
-		JButton button_1 = new JButton("I'm a Staff member");
+
+		JButton button_1 = new JButton("Register");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoginPage projectlogin3 = new LoginPage();
+				RegPage projectlogin3 = new RegPage();
 				projectlogin3.setVisible(true);
 			}
 		});
 		button_1.setBounds(144, 165, 153, 29);
 		frame.getContentPane().add(button_1);
-		
-		JLabel lblNewLabel = new JLabel("Welcome!");
-		lblNewLabel.setBounds(191, 55, 61, 16);
+
+		JLabel lblNewLabel = new JLabel("Welcome to <Hospital> schedule system!");
+		lblNewLabel.setBounds(100, 55, 300, 16);
 		frame.getContentPane().add(lblNewLabel);
-		
+
 	}
 
 }
 
 		/**
-		
+
 */
