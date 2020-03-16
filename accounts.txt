@@ -1,0 +1,19 @@
+doctor
+Dr. who
+who@gmail.ca
+546789
+
+patient
+Mr. Dough
+Dough@gmail.ca
+123678
+
+nurse
+NurseYeah
+NY@gmail.ca
+987654
+
+root
+RootDude
+root@gmail.com
+123456
