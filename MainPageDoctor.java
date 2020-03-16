@@ -1,3 +1,5 @@
+//Not using this file anymore. felt cute, might delete later.
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -38,18 +40,18 @@ public class MainPageDoctor extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Your appointment schedule:");
 		lblNewLabel.setBounds(128, 43, 205, 16);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Patient name");
 		lblNewLabel_1.setBounds(136, 71, 97, 16);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Timings");
 		lblNewLabel_2.setBounds(245, 71, 61, 16);
 		contentPane.add(lblNewLabel_2);
-		
+
 	}
 }
