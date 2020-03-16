@@ -98,16 +98,18 @@ public class LoginPage extends JFrame {
           error.printStackTrace();
         }
 
-				if ((user.getUserName().equals("doctor") || userN.equals("nurse")) && (user.getPassword().equals(pass)))
+				//Found the account. now open the right page for it.
+
+				if (user.getPassword().equals(pass))
 				{
-					JOptionPane.showMessageDialog(contentPane, "Welcome " + userN + "! ");
+					JOptionPane.showMessageDialog(contentPane, "Welcome " + user.getUserName() + "! ");
 					MainPageStaff mainpage1 = new MainPageStaff();
 					mainpage1.setVisible(true);
 				}
 
-				else if ((user.getUserName().equals("patient")) && (user.getPassword().equals(pass)))
+				else if ((user.getPassword().equals(pass))
 				{
-					JOptionPane.showMessageDialog(contentPane, "Welcome " + userN + "! " );
+					JOptionPane.showMessageDialog(contentPane, "Welcome " + user.getUserName() + "! " );
 					MainPagePatient mainpage3 = new MainPagePatient();
 					mainpage3.setVisible(true);
 				}
