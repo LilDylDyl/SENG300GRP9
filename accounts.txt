@@ -1,19 +1,23 @@
 doctor
+Doctor
 Dr. who
 who@gmail.ca
 546789
 
 patient
+Patient
 Mr. Dough
 Dough@gmail.ca
 123678
 
 nurse
+Patient
 NurseYeah
 NY@gmail.ca
 987654
 
 root
+Root
 RootDude
 root@gmail.com
 123456
