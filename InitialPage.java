@@ -11,7 +11,7 @@ import javax.swing.JPasswordField;
 
 public class InitialPage extends JFrame {
 
-	private JFrame frame;
+	private JFrame frmHospitalManagementSystem;
 	private JTextField textField;
 	private JButton btnNewButton;
 	private JPasswordField passwordField;
@@ -25,7 +25,7 @@ public class InitialPage extends JFrame {
 			public void run() {
 				try {
 					InitialPage window = new InitialPage();
-					window.frame.setVisible(true);
+					window.frmHospitalManagementSystem.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -44,10 +44,12 @@ public class InitialPage extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmHospitalManagementSystem = new JFrame();
+		frmHospitalManagementSystem.setTitle("Hospital Management System");
+		frmHospitalManagementSystem.setResizable(false);
+		frmHospitalManagementSystem.setBounds(100, 100, 666, 444);
+		frmHospitalManagementSystem.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmHospitalManagementSystem.getContentPane().setLayout(null);
 
 		JButton button = new JButton("Login");
 		button.addActionListener(new ActionListener() {
@@ -56,8 +58,8 @@ public class InitialPage extends JFrame {
 				projectlogin2.setVisible(true);
 			}
 		});
-		button.setBounds(144, 124, 153, 29);
-		frame.getContentPane().add(button);
+		button.setBounds(252, 184, 153, 29);
+		frmHospitalManagementSystem.getContentPane().add(button);
 
 		JButton button_1 = new JButton("Register");
 		button_1.addActionListener(new ActionListener() {
@@ -66,12 +68,12 @@ public class InitialPage extends JFrame {
 				projectlogin3.setVisible(true);
 			}
 		});
-		button_1.setBounds(144, 165, 153, 29);
-		frame.getContentPane().add(button_1);
+		button_1.setBounds(252, 225, 153, 29);
+		frmHospitalManagementSystem.getContentPane().add(button_1);
 
-		JLabel lblNewLabel = new JLabel("Welcome to <Hospital> schedule system!");
-		lblNewLabel.setBounds(100, 55, 300, 16);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblNewLabel = new JLabel("Welcome to Hospital Managemennt System");
+		lblNewLabel.setBounds(193, 141, 300, 16);
+		frmHospitalManagementSystem.getContentPane().add(lblNewLabel);
 
 	}
 
