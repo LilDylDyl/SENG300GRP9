@@ -31,19 +31,21 @@ public class MainPagePatient extends JFrame {
 	 * Create the frame.
 	 */
 	public MainPagePatient() {
+		setTitle("Patient");
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 666, 444);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("View your appointments");
-		btnNewButton.setBounds(127, 95, 188, 29);
+		btnNewButton.setBounds(242, 165, 188, 29);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Book an appointment");
-		btnNewButton_1.setBounds(127, 141, 188, 29);
+		btnNewButton_1.setBounds(242, 211, 188, 29);
 		contentPane.add(btnNewButton_1);
 	}
 
