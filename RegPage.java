@@ -13,6 +13,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 public class RegPage extends JFrame {
+	public RegPage() {
+		setTitle("Registration");
+		setResizable(false);
+	}
 
 	private JFrame frame;
 	private JTextField textField;
