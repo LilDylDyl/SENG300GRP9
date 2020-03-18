@@ -3,6 +3,8 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.FileOutputStream;
 
 public class Account{
 
@@ -14,7 +16,37 @@ public class Account{
     private int idNumber; 
 
 
-    public Account(String userN, String tpe, String nme, String mail, String pass, int id){
+    public Account(String userN, String tpe, String nme, String mail, String pass, Integer id){
+        try{
+            FileReader reader = new FileReader("accounts.txt");
+            FileWriter writer = new FileWriter("accounts.txt", true);
+            BufferedReader accountsInput = new BufferedReader(reader);
+            //StringBuffer inputBuffer = new StringBuffer();
+            //The following saves everything into a String buffer and appends the one line.
+            String account = accountsInput.readLine();
+            while(account != null){
+                    if (account.equals(this.userName)){
+                        System.out.println("User already exists");
+                        break;
+                    } 
+
+                account = accountsInput.readLine();
+
+            }
+            accountsInput.close();
+            writer.write("\n");
+            writer.write(userN + "\n");
+            writer.write(tpe + "\n");
+            writer.write(nme + "\n");
+            writer.write(mail + "\n");
+            writer.write(pass + "\n");
+            writer.write(id.toString() + "\n");
+            writer.close();
+
+
+        }catch(IOException error){
+            error.printStackTrace();
+        }
         this.userName = userN;
         this.type = tpe;
         this.name = nme;
@@ -60,7 +92,7 @@ public class Account{
         
         String copyPass = this.password;
 
-        return Password;
+        return copyPass;
 
     }
 
@@ -71,46 +103,73 @@ public class Account{
     }
 
 
-    public void setUserName(String userNme){
-        String userN = this.userName;
-        this.userName = userNme;
+    public void setUserName(String newUserName){
         try{
             FileReader reader = new FileReader("accounts.txt");
+            BufferedReader accountsInput = new BufferedReader(reader);
+            StringBuffer inputBuffer = new StringBuffer();
+            //The following saves everything into a String buffer and appends the one line.
+            String account = accountsInput.readLine();
+            while(account != null){
+                    if (account.equals(this.userName)){
+                        account = newUserName;
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    } else{
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    }
 
-            BufferedReader accounts_input = new BufferedReader(reader);
-            String account = accounts_input.readLine();
-            while (account != null){
-                if (account.equals(userN)){
-                    break;
-                }
-
-                 account = accounts_input.readLine();
+                account = accountsInput.readLine();
 
             }
-            accounts_input.close();
+            accountsInput.close();
+            //This reprints the String buffer created above
+            FileOutputStream fileOut = new FileOutputStream("accounts.txt");
+            fileOut.write(inputBuffer.toString().getBytes());
+            fileOut.close();
+            this.userName = newUserName;
 
         }catch(IOException error){
             error.printStackTrace();
         }
     }
 
-    public void setType(String tpe){
-        String userN = this.userName;
-        this.type = tpe;
+    public void setType(String newType){
+        //String userN = this.userName;
+        //this.type = tpe;
         try{
             FileReader reader = new FileReader("accounts.txt");
+            BufferedReader accountsInput = new BufferedReader(reader);
+            StringBuffer inputBuffer = new StringBuffer();
+            //The following saves everything into a String buffer and appends the one line.
+            String account = accountsInput.readLine();
+            while(account != null){
+                    if (account.equals(this.userName)){
+                        int counter = 1;
+                        while(counter < 2){
+                            inputBuffer.append(account);
+                            inputBuffer.append("\n");
+                            account = accountsInput.readLine(); 
+                            counter += 1; 
+                        }
+                        account = newType;
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    } else{
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    }
 
-            BufferedReader accounts_input = new BufferedReader(reader);
-            String account = accounts_input.readLine();
-            while (account != null){
-                if (account.equals(userN)){
-                    break;
-                }
-
-                 account = accounts_input.readLine();
+                account = accountsInput.readLine();
 
             }
-            accounts_input.close();
+            accountsInput.close();
+            //This reprints the String buffer created above
+            FileOutputStream fileOut = new FileOutputStream("accounts.txt");
+            fileOut.write(inputBuffer.toString().getBytes());
+            fileOut.close();
+            this.type = newType;
 
         }catch(IOException error){
             error.printStackTrace();
@@ -118,22 +177,38 @@ public class Account{
     }
 
     public void setName(String newName){
-        String userN = this.userName;
-        this.name = newName;
         try{
             FileReader reader = new FileReader("accounts.txt");
+            BufferedReader accountsInput = new BufferedReader(reader);
+            StringBuffer inputBuffer = new StringBuffer();
+            //The following saves everything into a String buffer and appends the one line.
+            String account = accountsInput.readLine();
+            while(account != null){
+                    if (account.equals(this.userName)){
+                        int counter = 1;
+                        while(counter < 3){
+                            inputBuffer.append(account);
+                            inputBuffer.append("\n");
+                            account = accountsInput.readLine(); 
+                            counter += 1; 
+                        }
+                        account = newName;
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    } else{
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    }
 
-            BufferedReader accounts_input = new BufferedReader(reader);
-            String account = accounts_input.readLine();
-            while (account != null){
-                if (account.equals(userN)){
-                    break;
-                }
-
-                 account = accounts_input.readLine();
+                account = accountsInput.readLine();
 
             }
-            accounts_input.close();
+            accountsInput.close();
+            //This reprints the String buffer created above
+            FileOutputStream fileOut = new FileOutputStream("accounts.txt");
+            fileOut.write(inputBuffer.toString().getBytes());
+            fileOut.close();
+            this.name = newName;
 
         }catch(IOException error){
             error.printStackTrace();
@@ -142,77 +217,135 @@ public class Account{
 
     }
 
-    public void setEMail(String mail){
-        String userN = this.userName;
-        this.email = mail;
+    public void setEMail(String newEmail){
         try{
             FileReader reader = new FileReader("accounts.txt");
+            BufferedReader accountsInput = new BufferedReader(reader);
+            StringBuffer inputBuffer = new StringBuffer();
+            //The following saves everything into a String buffer and appends the one line.
+            String account = accountsInput.readLine();
+            while(account != null){
+                    if (account.equals(this.userName)){
+                        int counter = 1;
+                        while(counter < 4){
+                            inputBuffer.append(account);
+                            inputBuffer.append("\n");
+                            account = accountsInput.readLine(); 
+                            counter += 1; 
+                        }
+                        account = newEmail;
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    } else{
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    }
 
-            BufferedReader accounts_input = new BufferedReader(reader);
-            String account = accounts_input.readLine();
-            while (account != null){
-                if (account.equals(userN)){
-                    break;
-                }
-
-                 account = accounts_input.readLine();
+                account = accountsInput.readLine();
 
             }
-            accounts_input.close();
+            accountsInput.close();
+            //This reprints the String buffer created above
+            FileOutputStream fileOut = new FileOutputStream("accounts.txt");
+            fileOut.write(inputBuffer.toString().getBytes());
+            fileOut.close();
+            this.email = newEmail;
 
         }catch(IOException error){
             error.printStackTrace();
         }
-
     }
 
-    public void setPassword(String copyPass){
-        String userN = this.userName;
-        this.password = copyPass;
+    public void setPassword(String newPassword){
         try{
             FileReader reader = new FileReader("accounts.txt");
+            BufferedReader accountsInput = new BufferedReader(reader);
+            StringBuffer inputBuffer = new StringBuffer();
+            //The following saves everything into a String buffer and appends the one line.
+            String account = accountsInput.readLine();
+            while(account != null){
+                    if (account.equals(this.userName)){
+                        int counter = 1;
+                        while(counter < 5){
+                            inputBuffer.append(account);
+                            inputBuffer.append("\n");
+                            account = accountsInput.readLine(); 
+                            counter += 1; 
+                        }
+                        account = newPassword;
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    } else{
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    }
 
-            BufferedReader accounts_input = new BufferedReader(reader);
-            String account = accounts_input.readLine();
-            while (account != null){
-                if (account.equals(userN)){
-                    break;
-                }
-
-                 account = accounts_input.readLine();
+                account = accountsInput.readLine();
 
             }
-            accounts_input.close();
+            accountsInput.close();
+            //This reprints the String buffer created above
+            FileOutputStream fileOut = new FileOutputStream("accounts.txt");
+            fileOut.write(inputBuffer.toString().getBytes());
+            fileOut.close();
+            this.password = newPassword;
 
         }catch(IOException error){
             error.printStackTrace();
         }
-
     }
 
-    public void setID(int id){
-        String userN = this.userName;
-        this.idNumber = id;
+    public void setID(Integer newId){
         try{
             FileReader reader = new FileReader("accounts.txt");
+            BufferedReader accountsInput = new BufferedReader(reader);
+            StringBuffer inputBuffer = new StringBuffer();
+            //The following saves everything into a String buffer and appends the one line.
+            String account = accountsInput.readLine();
+            while(account != null){
+                    if (account.equals(this.userName)){
+                        int counter = 1;
+                        while(counter < 6){
+                            inputBuffer.append(account);
+                            inputBuffer.append("\n");
+                            account = accountsInput.readLine(); 
+                            counter += 1; 
+                        }
+                        account = newId.toString();
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    } else{
+                        inputBuffer.append(account);
+                        inputBuffer.append("\n");
+                    }
 
-            BufferedReader accounts_input = new BufferedReader(reader);
-            String account = accounts_input.readLine();
-            while (account != null){
-                if (account.equals(userN)){
-                    break;
-                }
-
-                 account = accounts_input.readLine();
+                account = accountsInput.readLine();
 
             }
-            accounts_input.close();
+            accountsInput.close();
+            //This reprints the String buffer created above
+            FileOutputStream fileOut = new FileOutputStream("accounts.txt");
+            fileOut.write(inputBuffer.toString().getBytes());
+            fileOut.close();
+            this.idNumber = newId;
 
         }catch(IOException error){
             error.printStackTrace();
         }
 
         
+
+    }
+
+    public static void main(String[] args){
+        Account test = new Account("testUser", "Patient", "John Dough", "matty@gmail.ca", "password", 12345);
+
+        //test.setUserName("Matty");
+        //test.setType("differentType");
+        //test.setName("differentName");
+        //test.setEMail("new@mail.ca");
+        //test.setPassword("newpassword!!!!");
+        //test.setID(57843);
 
     }
 
