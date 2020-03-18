@@ -46,6 +46,8 @@ public class LoginPage extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginPage() {
+		setTitle("Login");
+		setResizable(false);
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -56,11 +58,11 @@ public class LoginPage extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(59, 82, 97, 28);
+		lblUsername.setBounds(75, 80, 97, 28);
 		contentPane.add(lblUsername);
 
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(59, 133, 97, 28);
+		lblPassword.setBounds(75, 134, 97, 28);
 		contentPane.add(lblPassword);
 
 		textField = new JTextField();
@@ -77,94 +79,32 @@ public class LoginPage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String userN = textField.getText();
 				String pass = passwordField.getText();
-				try{
-            FileReader reader = new FileReader("accounts.txt");
-            BufferedReader accounts_input = new BufferedReader(reader);
-            String account = accounts_input.readLine();
-
-            while (account != null){
-                if (account.equals(userN)){
-										Account user = new Account(account);
-										System.out.println("Found account: "+ user.getUserName());
-                    break;
-                }
-                 account = accounts_input.readLine();
-            }
-
-            accounts_input.close();
-
-        }catch(IOException error){
-					System.out.println("No account with that username exists");
-          error.printStackTrace();
-        }
-
-				//Found the account. now open the right page for it.
-
-				if (user.getPassword().equals(pass))
+				if((Account.VerifyLogin(userN, pass).equals("Doctor")))
 				{
-					JOptionPane.showMessageDialog(contentPane, "Welcome " + user.getUserName() + "! ");
+					JOptionPane.showMessageDialog(contentPane, "Welcome " + userN + "! " + "You are successfully logged in");
+					MainPageDoctor mainpagedoctor = new MainPageDoctor();
+					mainpagedoctor.setVisible(true);
+				}
+				else if((Account.VerifyLogin(userN, pass).equals("Patient")))
+				{
+					JOptionPane.showMessageDialog(contentPane, "Welcome " + userN + "! " + "You are successfully logged in");
+					MainPagePatient mainpagepatient = new MainPagePatient();
+					mainpagepatient.setVisible(true);
+				}
+				else if((Account.VerifyLogin(userN, pass).equals("Staff")))
+				{
+					JOptionPane.showMessageDialog(contentPane, "Welcome " + userN + "! " + "You are successfully logged in");
 					MainPageStaff mainpage1 = new MainPageStaff();
 					mainpage1.setVisible(true);
-				}
-
-				else if ((user.getPassword().equals(pass))
-				{
-					JOptionPane.showMessageDialog(contentPane, "Welcome " + user.getUserName() + "! " );
-					MainPagePatient mainpage3 = new MainPagePatient();
-					mainpage3.setVisible(true);
 				}
 				else
 				{
 					JOptionPane.showMessageDialog(contentPane, "Invalid username or password");
 				}
-
 			}
 		});
-		btnNewButton.setBounds(111, 199, 117, 29);
+		btnNewButton.setBounds(178, 190, 108, 29);
 		contentPane.add(btnNewButton);
-
 	}
-
 }
-		/**
-		JButton btnNewButton = new JButton("I'm a Doctor");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String case1 = btnNewButton.getText();
-				if (case1.equals("I'm a Doctor")) {
-					JOptionPane.showMessageDialog(contentPane, "Welcome to our Hospital Management System!");
-					ProjectLogin projectlogin1 = new ProjectLogin();
-					projectlogin1.setVisible(true);
-				}
-			}
-		});
-		btnNewButton.setBounds(144, 83, 153, 29);
-		contentPane.add(btnNewButton);
 
-		JButton button = new JButton("I'm a Patient");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ProjectLogin projectlogin2 = new ProjectLogin();
-				projectlogin2.setVisible(true);
-			}
-		});
-		button.setBounds(144, 124, 153, 29);
-		contentPane.add(button);
-
-		JButton button_1 = new JButton("I'm a Staff member");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ProjectLogin projectlogin3 = new ProjectLogin();
-				projectlogin3.setVisible(true);
-			}
-		});
-		button_1.setBounds(144, 165, 153, 29);
-		contentPane.add(button_1);
-
-		JLabel lblNewLabel = new JLabel("Welcome!");
-		lblNewLabel.setBounds(191, 55, 61, 16);
-		contentPane.add(lblNewLabel);
-	}
-
-}
-*/
