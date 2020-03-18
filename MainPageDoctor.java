@@ -34,23 +34,25 @@ public class MainPageDoctor extends JFrame {
 	 * Create the frame.
 	 */
 	public MainPageDoctor() {
+		setTitle("Doctor");
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 666, 444);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Your appointment schedule:");
-		lblNewLabel.setBounds(128, 43, 205, 16);
+		lblNewLabel.setBounds(236, 166, 205, 16);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Patient name");
-		lblNewLabel_1.setBounds(136, 71, 97, 16);
+		lblNewLabel_1.setBounds(244, 194, 97, 16);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Timings");
-		lblNewLabel_2.setBounds(245, 71, 61, 16);
+		lblNewLabel_2.setBounds(353, 194, 61, 16);
 		contentPane.add(lblNewLabel_2);
 
 	}
