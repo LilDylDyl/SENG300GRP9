@@ -30,15 +30,17 @@ public class MainPageStaff extends JFrame {
 	 * Create the frame.
 	 */
 	public MainPageStaff() {
+		setTitle("Staff");
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 666, 444);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("View my schedule");
-		btnNewButton.setBounds(144, 114, 162, 29);
+		btnNewButton.setBounds(252, 195, 162, 29);
 		contentPane.add(btnNewButton);
 	}
 
