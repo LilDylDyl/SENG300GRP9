@@ -16,15 +16,43 @@ nurse
 Patient
 NurseYeah
 NY@gmail.ca
-nurs1
+nurse1
 987654
 
 root
-Root
+Patient
 RootDude
 root@gmail.com
 root1
 123456
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+12345
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+12345
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+12345
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+12345
 
 testUser
 Patient
