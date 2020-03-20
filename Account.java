@@ -19,7 +19,7 @@ public class Account{
     private int idNumber; 
 
 
-    public Account(String userN, String tpe, String nme, String mail, String pass, Integer id){
+    public Account(String userN, String tpe, String nme, String mail, String pass){
         try{
             FileReader reader = new FileReader("accounts.txt");
             FileWriter writer = new FileWriter("accounts.txt", true);
@@ -43,7 +43,6 @@ public class Account{
             writer.write(nme + "\n");
             writer.write(mail + "\n");
             writer.write(pass + "\n");
-            writer.write(id.toString() + "\n");
             writer.close();
 
 
@@ -55,10 +54,9 @@ public class Account{
         this.name = nme;
         this.email = mail;
         this.password = pass;
-        this.idNumber = id;
     }
-    
-    public static String VerifyLogin(String username, String password) {
+
+	public static String VerifyLogin(String username, String password) {
 
     	String verifyPassword = "";
     	String type = "";
@@ -381,7 +379,7 @@ public class Account{
     }
 
     public static void main(String[] args){
-        Account test = new Account("testUser", "Patient", "John Dough", "matty@gmail.ca", "password", 12345);
+        Account test = new Account("testUser", "Patient", "John Dough", "matty@gmail.ca", "password");
 
         //test.setUserName("Matty");
         //test.setType("differentType");
