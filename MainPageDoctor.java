@@ -2,7 +2,10 @@
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -54,6 +57,5 @@ public class MainPageDoctor extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Timings");
 		lblNewLabel_2.setBounds(353, 194, 61, 16);
 		contentPane.add(lblNewLabel_2);
-
 	}
 }
