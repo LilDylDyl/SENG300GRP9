@@ -116,7 +116,6 @@ public class RegPage extends JFrame {
 		});
 		comboBox.setBounds(285, 168, 159, 27);
 		comboBox.setSelectedIndex(2);
-		//comboBox.addActionListener(null);
 		getContentPane().add(comboBox);
 		
 		JButton btnNewButton = new JButton("Register");
@@ -169,7 +168,3 @@ public class RegPage extends JFrame {
 	}
 
 }
-
-//"add appointment"
-//"change appoinment"
-//"cancel appointment"
