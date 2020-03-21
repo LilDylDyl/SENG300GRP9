@@ -1,11 +1,15 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainPagePatient extends JFrame {
 
@@ -40,13 +44,38 @@ public class MainPagePatient extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("View your appointments");
-		btnNewButton.setBounds(242, 165, 188, 29);
+		JButton btnNewButton = new JButton("View appointment");
+		btnNewButton.setBounds(242, 136, 188, 29);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Book an appointment");
-		btnNewButton_1.setBounds(242, 211, 188, 29);
+		JButton btnNewButton_1 = new JButton("Book appointment");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BookAppointment bookAppointment = new BookAppointment();
+				bookAppointment.setVisible(true);
+			}
+		});
+		btnNewButton_1.setBounds(242, 188, 188, 29);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Edit appointment");
+		btnNewButton_2.setBounds(242, 238, 188, 29);
+		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Cancel appointment");
+		btnNewButton_3.setBounds(242, 287, 188, 29);
+		contentPane.add(btnNewButton_3);
+		
+		JLabel lblNewLabel = new JLabel("You can manage your appointments using the options below!");
+		lblNewLabel.setBounds(150, 90, 399, 34);
+		lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 16));
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Welcome!");
+		lblNewLabel_1.setBounds(288, 44, 109, 38);
+		lblNewLabel_1.setFont(new Font("Serif", Font.ROMAN_BASELINE, 20));
+		contentPane.add(lblNewLabel_1);
+		
 	}
 
 }
