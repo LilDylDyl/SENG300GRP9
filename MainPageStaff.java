@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,7 +27,7 @@ public class MainPageStaff extends JFrame {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -42,6 +44,7 @@ public class MainPageStaff extends JFrame {
 		JButton btnNewButton = new JButton("View my schedule");
 		btnNewButton.setBounds(252, 195, 162, 29);
 		contentPane.add(btnNewButton);
+		
 	}
 
 }
