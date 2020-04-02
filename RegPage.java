@@ -141,16 +141,16 @@ public class RegPage extends JFrame {
 					Account account2 = new Account(userName, accountType, name, email, password);
 					
 					JOptionPane.showMessageDialog(contentPane, "Registration complete! Welcome " + name + "! ");
-					MainPageDoctor mainpagedoctor = new MainPageDoctor();
-					mainpagedoctor.setVisible(true);
+					MainPagePatient mainpagepatient = new MainPagePatient();
+					mainpagepatient.setVisible(true);
 				}
 				if(password.equals(confirmPassword) && accountType.equals("Staff Member")) {
 					
 					Account account3 = new Account(userName, accountType, name, email, password);
 					
 					JOptionPane.showMessageDialog(contentPane, "Registration complete! Welcome " + name + "! ");
-					MainPageDoctor mainpagedoctor = new MainPageDoctor();
-					mainpagedoctor.setVisible(true);
+					MainPageStaff mainpage1 = new MainPageStaff();
+					mainpage1.setVisible(true);
 				}
 				else if((password.equals(confirmPassword)) == false) {
 					JOptionPane.showMessageDialog(contentPane, "Your passwords do not match! Please try again");
@@ -168,3 +168,7 @@ public class RegPage extends JFrame {
 	}
 
 }
+
+//"add appointment"
+//"change appoinment"
+//"cancel appointment"
