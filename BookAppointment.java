@@ -14,6 +14,8 @@ import javax.swing.JButton;
 public class BookAppointment extends JFrame {
 
 	private JPanel contentPane;
+	public static String monthChosen = "s";
+	public String[] dates;
 
 	/**
 	 * Launch the application.
@@ -44,46 +46,47 @@ public class BookAppointment extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		String[] doctorsList = {"Dr. Strange", "Dr. Who", "Dr. Banner"};	
+		String[] doctorsList = {"--Choose doctor--", "Dr. Strange", "Dr. Who", "Dr. Banner"};	
 		JComboBox comboBox = new JComboBox(doctorsList);
-		comboBox.setBounds(358, 111, 132, 27);
+		comboBox.setBounds(286, 143, 180, 27);
 		contentPane.add(comboBox);
 		
 		String[] array = Appointment.getMonths().toArray(new String[Appointment.getMonths().size()]);
 		JComboBox comboBox_1 = new JComboBox(array);
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//monthChosen = comboBox_1.getSelectedItem().toString();
+				setMonthName(comboBox_1.getSelectedItem().toString());
+				//System.out.println(monthChosen);
+				
 				JComboBox comboBox_1 = (JComboBox)e.getSource();
 			}
 		});
-		comboBox_1.setBounds(358, 174, 132, 27);
+		comboBox_1.setBounds(286, 206, 180, 27);
 		contentPane.add(comboBox_1);
+
 		
-		//String monthChosen = comboBox_1.getSelectedItem().toString();
-		//String[] dates = Appointment.getDates(monthChosen).toArray(new String[Appointment.getDates(monthChosen).size()]);
-		String[] dates = Appointment.getDates("January").toArray(new String[Appointment.getDates("January").size()]);
-		JComboBox comboBox_2 = new JComboBox(dates);
-		comboBox_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		comboBox_2.setBounds(358, 238, 132, 27);
-		contentPane.add(comboBox_2);
-		
-		JLabel lblNewLabel = new JLabel("Choose doctor:");
-		lblNewLabel.setBounds(204, 115, 124, 16);
+		JLabel lblNewLabel = new JLabel("Doctor:");
+		lblNewLabel.setBounds(217, 147, 57, 16);
 		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel("Month:");
-		label.setBounds(204, 178, 124, 16);
+		label.setBounds(217, 210, 57, 16);
 		contentPane.add(label);
 		
-		JLabel label_1 = new JLabel("Appointment date:");
-		label_1.setBounds(204, 242, 124, 16);
-		contentPane.add(label_1);
+
 		
 		JButton btnNewButton = new JButton("Next");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BookAppointment2 bookappointment2 = new BookAppointment2();
+				bookappointment2.setVisible(true);
+			}
+		});
 		btnNewButton.setBounds(275, 346, 117, 29);
 		contentPane.add(btnNewButton);
+	}
+	public void setMonthName(String month){
+		monthChosen = month;
 	}
 }
