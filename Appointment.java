@@ -15,6 +15,7 @@ public class Appointment{
     private String time;
 	
 	public Appointment(String pat, String doc, String dte, String mnth, String tim){
+		Boolean valid = true;
         try{
             FileReader reader = new FileReader("appointments.txt");
             FileWriter writer = new FileWriter("appointments.txt", true);
@@ -29,6 +30,7 @@ public class Appointment{
 							line = appointmentSymbols.readLine();
 							if(line.equals(tim)){
 								System.out.println("appointment unavailable");
+								valid = false;
 								break;
 							}
 
@@ -40,15 +42,16 @@ public class Appointment{
                 line = appointmentSymbols.readLine();
 
             }
-            appointmentSymbols.close();
+			appointmentSymbols.close();
+			if (valid){
             writer.write("\n");
             writer.write(pat + "\n");
             writer.write(doc + "\n");
             writer.write(dte + "\n");
             writer.write(mnth + "\n");
             writer.write(tim + "\n");
-            writer.close();
-
+			writer.close();
+			}
 
         }catch(IOException error){
             error.printStackTrace();
@@ -311,11 +314,11 @@ public class Appointment{
 
 		 Appointment test = new Appointment("Matt", "doc", "2", "April", "10:30");
 
-		 test.setPatient("newMatt");
-		 test.setDoctor("newDoctor");
-		 test.setDate("3");
-		 test.setMonth("May");
-		 test.setTiming("20:15");
+		 //test.setPatient("newMatt");
+		 //test.setDoctor("newDoctor");
+		 //test.setDate("3");
+		 //test.setMonth("May");
+		 //test.setTiming("20:15");
     	
         
     }
