@@ -1,6 +1,7 @@
 import java.util.*; 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -297,7 +298,60 @@ public class Appointment{
         }catch(IOException error){
             error.printStackTrace();
         }
-    }
+	}
+	
+	public static void cancelAppointment(Appointment appointment)
+	{
+		try{
+			PrintWriter writer = new PrintWriter("temp.txt", "UTF-8");
+			FileReader reader = new FileReader("appointments.txt");
+            BufferedReader appointmentSymbols = new BufferedReader(reader);
+            StringBuffer inputBuffer = new StringBuffer();
+            //The following saves everything into a String buffer and appends the one line.
+			String line ="";
+			while(line != null){
+				line = appointmentSymbols.readLine();
+				if (line != null){
+					if(line.equals(appointment.getPatient())){
+						line = appointmentSymbols.readLine();
+						if(line.equals(appointment.getDoctor())){
+							line = appointmentSymbols.readLine();
+							if (line.equals(appointment.getDate())){
+								line = appointmentSymbols.readLine();
+								if(line.equals(appointment.getMonth())){
+									line = appointmentSymbols.readLine();
+									if(line.equals(appointment.getTiming())){
+										line = appointmentSymbols.readLine();
+										line = appointmentSymbols.readLine();
+
+									}
+								}
+							}
+						} 
+					} 
+					if(line != null)
+						writer.println(line);
+				}
+            }
+			appointmentSymbols.close();
+			writer.close();
+
+			File old = new File("appointments.txt");
+			File newFile = new File("temp.txt");
+			boolean b = old.delete();
+			boolean rename = newFile.renameTo(old);
+			
+			if (rename){
+				System.out.println("renamed");
+			}
+			if (b){
+				System.out.println("deleted");
+			}
+		} catch (IOException error){
+			error.printStackTrace();
+		}
+
+	}
 
     public static void main(String args[]) 
     { 
@@ -313,6 +367,9 @@ public class Appointment{
 		 */
 
 		 Appointment test = new Appointment("Matt", "doc", "2", "April", "10:30");
+		 Appointment test2 = new Appointment("Matt2", "doc2", "3", "May", "7:45");
+
+		 cancelAppointment(test);
 
 		 //test.setPatient("newMatt");
 		 //test.setDoctor("newDoctor");
