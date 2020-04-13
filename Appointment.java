@@ -30,7 +30,6 @@ public class Appointment{
 						if(line.equals(mnth)){
 							line = appointmentSymbols.readLine();
 							if(line.equals(tim)){
-								System.out.println("appointment unavailable");
 								valid = false;
 								break;
 							}
@@ -299,9 +298,11 @@ public class Appointment{
             error.printStackTrace();
         }
 	}
-	
-	public static void cancelAppointment(Appointment appointment)
+
+	public static void cancelAppointment(String uname, String docName, String date, String month, String time)
 	{
+        int position = getPositionOnDataBase(uname, docName, date, month, time);
+        int counter = 0;
 		try{
 			PrintWriter writer = new PrintWriter("temp.txt", "UTF-8");
 			FileReader reader = new FileReader("appointments.txt");
@@ -312,18 +313,20 @@ public class Appointment{
 			while(line != null){
 				line = appointmentSymbols.readLine();
 				if (line != null){
-					if(line.equals(appointment.getPatient())){
-						line = appointmentSymbols.readLine();
-						if(line.equals(appointment.getDoctor())){
+					if(line.equals(uname)){
+                        counter += 1;
+                        if (counter == position){
+                            line = appointmentSymbols.readLine();
+                        }
+						if(line.equals(docName)){
 							line = appointmentSymbols.readLine();
-							if (line.equals(appointment.getDate())){
+							if (line.equals(date)){
 								line = appointmentSymbols.readLine();
-								if(line.equals(appointment.getMonth())){
+								if(line.equals(month)){
 									line = appointmentSymbols.readLine();
-									if(line.equals(appointment.getTiming())){
+									if(line.equals(time)){
 										line = appointmentSymbols.readLine();
 										line = appointmentSymbols.readLine();
-
 									}
 								}
 							}
@@ -351,8 +354,42 @@ public class Appointment{
 			error.printStackTrace();
 		}
 
-	}
+}
 
+public static int getPositionOnDataBase(String username, String docName, String date, String month, String time) {
+		int counter = 0;
+		try {
+	        FileReader reader = new FileReader("appointments.txt");
+	        FileWriter writer = new FileWriter("appointments.txt", true);
+	        BufferedReader appointmentSymbols = new BufferedReader(reader);
+	        String uname = appointmentSymbols.readLine();
+	        while(uname != null){
+				if(uname.equals(username)){
+                    counter++;
+                    uname = appointmentSymbols.readLine();
+                    if(uname.equals(docName)){
+                        uname = appointmentSymbols.readLine();
+                        if(uname.equals(date)){
+                            uname = appointmentSymbols.readLine();
+                            if(uname.equals(month)){
+                                uname = appointmentSymbols.readLine();
+                                if(uname.equals(time)){
+                                    break;
+                                }
+                            }
+                        }
+                    }
+					//System.out.println(uname);
+				}
+				uname = appointmentSymbols.readLine();	
+				}
+	            appointmentSymbols.close();
+	            
+		}catch(IOException error){
+            error.printStackTrace();
+        }
+		return counter;
+	}
     public static void main(String args[]) 
     { 
 		/**
@@ -368,8 +405,6 @@ public class Appointment{
 
 		 Appointment test = new Appointment("Matt", "doc", "2", "April", "10:30");
 		 Appointment test2 = new Appointment("Matt2", "doc2", "3", "May", "7:45");
-
-		 cancelAppointment(test);
 
 		 //test.setPatient("newMatt");
 		 //test.setDoctor("newDoctor");
@@ -455,8 +490,84 @@ public class Appointment{
     
     public static List<String> getTime() {
     	List<String> timeList = new ArrayList<String>();
-        String[] timings = {"9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM"};
+        String[] timings = {"--Choose Time--", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM"};
         Collections.addAll(timeList, timings);
         return timeList;
+    }
+    
+    public static ArrayList<String> getAppointments(String name){
+        //String name = user.getName();
+        int amountOfAppointments = ViewAppointmentPatient.numberOfAppointments(name);
+        ArrayList<String> appointmentInfo = new ArrayList<String>();
+        try{
+            FileReader reader = new FileReader("appointments.txt");
+            BufferedReader appointmentSymbols = new BufferedReader(reader);
+            String line = appointmentSymbols.readLine();
+            while(amountOfAppointments != 0){
+				if(line.equals(name)){
+                    appointmentInfo.add(line);
+					line = appointmentSymbols.readLine();
+                    appointmentInfo.add(line);
+                    line = appointmentSymbols.readLine();
+                    appointmentInfo.add(line);
+                    line = appointmentSymbols.readLine();
+                    appointmentInfo.add(line);
+                    line = appointmentSymbols.readLine();
+                    appointmentInfo.add(line);
+                    amountOfAppointments -= 1;
+				} 
+                line = appointmentSymbols.readLine();
+            }
+            appointmentSymbols.close();
+            
+            
+        } catch (IOException error){
+			error.printStackTrace();
+        }
+        //System.out.println(appointmentInfo);
+        return appointmentInfo;
+    }
+    
+    public static ArrayList<String> getAppointmentsDoctor(String name){
+        String info = "";
+        int amountOfAppointments = ViewAppointmentDoctor.numberOfAppointmentsDoctor(name);
+        ArrayList<String> appointmentInfo = new ArrayList<String>();
+        try{
+            FileReader reader = new FileReader("appointments.txt");
+            FileReader reader2 = new FileReader("appointments.txt");
+            BufferedReader appointmentSymbols = new BufferedReader(reader);
+            BufferedReader collectInfoReader = new BufferedReader(reader2);
+            String line = appointmentSymbols.readLine();
+            while(amountOfAppointments != 0){
+				if(line.equals(name)){
+                    appointmentInfo.add(info);
+                    line = appointmentSymbols.readLine();
+                    info = collectInfoReader.readLine();
+                    appointmentInfo.add(info);
+                    line = appointmentSymbols.readLine();
+                    info = collectInfoReader.readLine();
+                    appointmentInfo.add(info);
+                    line = appointmentSymbols.readLine();
+                    info = collectInfoReader.readLine();
+                    appointmentInfo.add(info);
+                    line = appointmentSymbols.readLine();
+                    info = collectInfoReader.readLine();
+                    appointmentInfo.add(info);
+                    amountOfAppointments -= 1;
+				} 
+
+                line = appointmentSymbols.readLine();
+                info = collectInfoReader.readLine();
+
+            }
+            appointmentSymbols.close();
+            collectInfoReader.close();
+            
+            
+        } catch (IOException error){
+			error.printStackTrace();
+        }
+        //System.out.println(appointmentInfo);
+        return appointmentInfo;
     }
 }
