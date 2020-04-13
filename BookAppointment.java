@@ -14,7 +14,8 @@ import javax.swing.JButton;
 public class BookAppointment extends JFrame {
 
 	private JPanel contentPane;
-	public static String monthChosen = "s";
+	public static String monthChosen;
+	public static String doctorChosen;
 	public String[] dates;
 
 	/**
@@ -48,6 +49,11 @@ public class BookAppointment extends JFrame {
 		
 		String[] doctorsList = {"--Choose doctor--", "Dr. Strange", "Dr. Who", "Dr. Banner"};	
 		JComboBox comboBox = new JComboBox(doctorsList);
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setDoctorName(comboBox.getSelectedItem().toString());
+			}
+		});
 		comboBox.setBounds(286, 143, 180, 27);
 		contentPane.add(comboBox);
 		
@@ -55,7 +61,6 @@ public class BookAppointment extends JFrame {
 		JComboBox comboBox_1 = new JComboBox(array);
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//monthChosen = comboBox_1.getSelectedItem().toString();
 				setMonthName(comboBox_1.getSelectedItem().toString());
 				//System.out.println(monthChosen);
 				
@@ -65,7 +70,6 @@ public class BookAppointment extends JFrame {
 		comboBox_1.setBounds(286, 206, 180, 27);
 		contentPane.add(comboBox_1);
 
-		
 		JLabel lblNewLabel = new JLabel("Doctor:");
 		lblNewLabel.setBounds(217, 147, 57, 16);
 		contentPane.add(lblNewLabel);
@@ -86,7 +90,12 @@ public class BookAppointment extends JFrame {
 		btnNewButton.setBounds(275, 346, 117, 29);
 		contentPane.add(btnNewButton);
 	}
+	
 	public void setMonthName(String month){
 		monthChosen = month;
+	}
+	
+	public void setDoctorName(String doctor){
+		doctorChosen = doctor;
 	}
 }
