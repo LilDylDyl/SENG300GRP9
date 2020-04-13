@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JFormattedTextField;
 import javax.swing.JComboBox;
-public class RegPage extends JFrame {
+public class RegPage extends LoginPage {
 	
 	private JPanel contentPane;
 	private JTextField textField_2;
@@ -124,13 +124,13 @@ public class RegPage extends JFrame {
 				String accountType = comboBox.getSelectedItem().toString();
 				String name = textField_3.getText();
 				String email = textField_2.getText();
-				String userName = textField_6.getText();
+				setUsername(textField_6.getText());
 				String password = passwordField_1.getText();
 				String confirmPassword = passwordField_2.getText();
 				
 				if(password.equals(confirmPassword) && accountType.equals("Doctor")) {
 					
-					Account account1 = new Account(userName, accountType, name, email, password);
+					Account account1 = new Account(username, accountType, name, email, password);
 					
 					JOptionPane.showMessageDialog(contentPane, "Registration complete! Welcome " + name + "! ");
 					MainPageDoctor mainpagedoctor = new MainPageDoctor();
@@ -138,7 +138,7 @@ public class RegPage extends JFrame {
 				}
 				if(password.equals(confirmPassword) && accountType.equals("Patient")) {
 					
-					Account account2 = new Account(userName, accountType, name, email, password);
+					Account account2 = new Account(username, accountType, name, email, password);
 					
 					JOptionPane.showMessageDialog(contentPane, "Registration complete! Welcome " + name + "! ");
 					MainPagePatient mainpagepatient = new MainPagePatient();
@@ -146,7 +146,7 @@ public class RegPage extends JFrame {
 				}
 				if(password.equals(confirmPassword) && accountType.equals("Staff Member")) {
 					
-					Account account3 = new Account(userName, accountType, name, email, password);
+					Account account3 = new Account(username, accountType, name, email, password);
 					
 					JOptionPane.showMessageDialog(contentPane, "Registration complete! Welcome " + name + "! ");
 					MainPageStaff mainpage1 = new MainPageStaff();
@@ -164,11 +164,10 @@ public class RegPage extends JFrame {
 		lblNewLabel_1.setBounds(188, 17, 290, 44);
 		lblNewLabel_1.setFont(new Font("Serif", Font.PLAIN, 20));
 		contentPane.add(lblNewLabel_1);
-		
+	}
+	
+	public void setUsername(String uname){
+		username = uname;
 	}
 
 }
-
-//"add appointment"
-//"change appoinment"
-//"cancel appointment"
