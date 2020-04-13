@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 public class BookAppointment2 extends BookAppointment {
 
 	private JPanel contentPane;
+	public static String dateChosen;
 
 	/**
 	 * Launch the application.
@@ -50,6 +51,7 @@ public class BookAppointment2 extends BookAppointment {
 		JComboBox comboBox_2 = new JComboBox(dates);
 		comboBox_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setDate(comboBox_2.getSelectedItem().toString());
 			}
 		});
 		comboBox_2.setBounds(334, 174, 166, 27);
@@ -74,5 +76,9 @@ public class BookAppointment2 extends BookAppointment {
 		lblNewLabel.setBounds(249, 67, 177, 44);
 		lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 25));
 		contentPane.add(lblNewLabel);
+	}
+	
+	public void setDate(String date){
+		dateChosen = date;
 	}
 }
