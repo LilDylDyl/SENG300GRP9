@@ -1,12 +1,15 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class MainPageStaff extends JFrame {
 
@@ -41,10 +44,30 @@ public class MainPageStaff extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("View my schedule");
-		btnNewButton.setBounds(252, 195, 162, 29);
+		JButton btnNewButton = new JButton("View appointments");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewAppointmentStaff1 viewAppointmentStaff1 = new ViewAppointmentStaff1();
+				viewAppointmentStaff1.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(242, 166, 188, 29);
 		contentPane.add(btnNewButton);
 		
+		JButton btnNewButton_3 = new JButton("Cancel appointments");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CancelAppointmentStaff1 cancelAppointmentStaff1 = new CancelAppointmentStaff1();
+				cancelAppointmentStaff1.setVisible(true);
+			}
+		});
+		btnNewButton_3.setBounds(242, 218, 188, 29);
+		contentPane.add(btnNewButton_3);
+		
+		JLabel lblNewLabel = new JLabel("Welcome! You can manage doctor's appointments below.");
+		lblNewLabel.setBounds(115, 90, 470, 38);
+		lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+		contentPane.add(lblNewLabel);
 	}
 
 }
