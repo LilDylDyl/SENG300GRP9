@@ -2,6 +2,7 @@
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,7 +16,6 @@ import javax.swing.JTable;
 public class MainPageDoctor extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -46,16 +46,42 @@ public class MainPageDoctor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Your appointment schedule:");
-		lblNewLabel.setBounds(236, 166, 205, 16);
+		JButton btnNewButton = new JButton("View appointments");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewAppointmentDoctor viewAppointmentDoctor = new ViewAppointmentDoctor();
+				viewAppointmentDoctor.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(242, 136, 188, 29);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_2 = new JButton("Edit appointment");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_2.setBounds(242, 238, 188, 29);
+		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Cancel appointments");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CancelAppointmentDoctor cancelAppointmentDoctor = new CancelAppointmentDoctor();
+				cancelAppointmentDoctor.setVisible(true);
+			}
+		});
+		btnNewButton_3.setBounds(242, 188, 188, 29);
+		contentPane.add(btnNewButton_3);
+		
+		JLabel lblNewLabel = new JLabel("You can manage your appointments using the options below!");
+		lblNewLabel.setBounds(150, 90, 399, 34);
+		lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 16));
 		contentPane.add(lblNewLabel);
-
-		JLabel lblNewLabel_1 = new JLabel("Patient name");
-		lblNewLabel_1.setBounds(244, 194, 97, 16);
+		
+		JLabel lblNewLabel_1 = new JLabel("Welcome!");
+		lblNewLabel_1.setBounds(288, 44, 109, 38);
+		lblNewLabel_1.setFont(new Font("Serif", Font.ROMAN_BASELINE, 20));
 		contentPane.add(lblNewLabel_1);
-
-		JLabel lblNewLabel_2 = new JLabel("Timings");
-		lblNewLabel_2.setBounds(353, 194, 61, 16);
-		contentPane.add(lblNewLabel_2);
 	}
 }
