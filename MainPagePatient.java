@@ -45,6 +45,13 @@ public class MainPagePatient extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("View appointment");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewAppointmentPatient viewAppointmentPatient = new ViewAppointmentPatient();
+				viewAppointmentPatient.setVisible(true);
+			}
+		});
+		
 		btnNewButton.setBounds(242, 136, 188, 29);
 		contentPane.add(btnNewButton);
 		
@@ -59,12 +66,32 @@ public class MainPagePatient extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Edit appointment");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_2.setBounds(242, 238, 188, 29);
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Cancel appointment");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CancelAppointmentPatient cancelAppointmentPatient = new CancelAppointmentPatient();
+				cancelAppointmentPatient.setVisible(true);
+			}
+		});
 		btnNewButton_3.setBounds(242, 287, 188, 29);
 		contentPane.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("More information");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MoreInformation moreInformation = new MoreInformation();
+				moreInformation.setVisible(true);
+			}
+		});
+		btnNewButton_4.setBounds(242, 337, 188, 29);
+		contentPane.add(btnNewButton_4);
 		
 		JLabel lblNewLabel = new JLabel("You can manage your appointments using the options below!");
 		lblNewLabel.setBounds(150, 90, 399, 34);
