@@ -25,6 +25,7 @@ public class LoginPage extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JPasswordField passwordField;
+	public static String username;
 
 	/**
 	 * Launch the application.
@@ -77,34 +78,62 @@ public class LoginPage extends JFrame {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String userN = textField.getText();
+				setUsername(textField.getText());
 				String pass = passwordField.getText();
-				if((Account.VerifyLogin(userN, pass).equals("Doctor")))
-				{
-					JOptionPane.showMessageDialog(contentPane, "Welcome " + userN + "! " + "You are successfully logged in");
-					MainPageDoctor mainpagedoctor = new MainPageDoctor();
-					mainpagedoctor.setVisible(true);
-				}
-				else if((Account.VerifyLogin(userN, pass).equals("Patient")))
-				{
-					JOptionPane.showMessageDialog(contentPane, "Welcome " + userN + "! " + "You are successfully logged in");
-					MainPagePatient mainpagepatient = new MainPagePatient();
-					mainpagepatient.setVisible(true);
-				}
-				else if((Account.VerifyLogin(userN, pass).equals("Staff")))
-				{
-					JOptionPane.showMessageDialog(contentPane, "Welcome " + userN + "! " + "You are successfully logged in");
-					MainPageStaff mainpage1 = new MainPageStaff();
-					mainpage1.setVisible(true);
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(contentPane, "Invalid username or password");
-				}
+				
+				try{
+		            FileReader reader = new FileReader("accounts.txt");
+		            BufferedReader accounts_input = new BufferedReader(reader);
+		            String account = accounts_input.readLine();
+
+		            while (account != null){
+		                if (account.equals(username)){
+		                	System.out.println("Username = " + username);
+		                	account = accounts_input.readLine();
+		                	account = accounts_input.readLine();
+		                	account = accounts_input.readLine();
+		                	String verifyPassword = accounts_input.readLine();
+		                	if (verifyPassword.equals(pass)) {
+		                		System.out.println("Password = " + verifyPassword);
+		        				if((Account.VerifyLogin(username, pass).equals("Doctor")))
+		        				{
+		        					JOptionPane.showMessageDialog(contentPane, "Welcome " + username + "! " + "You are successfully logged in");
+		        					MainPageDoctor mainpagedoctor = new MainPageDoctor();
+		        					mainpagedoctor.setVisible(true);
+		        				}
+		        				else if((Account.VerifyLogin(username, pass).equals("Patient")))
+		        				{
+		        					JOptionPane.showMessageDialog(contentPane, "Welcome " + username + "! " + "You are successfully logged in");
+		        					MainPagePatient mainpagepatient = new MainPagePatient();
+		        					mainpagepatient.setVisible(true);
+		        				}
+		        				else if((Account.VerifyLogin(username, pass).equals("Staff")))
+		        				{
+		        					JOptionPane.showMessageDialog(contentPane, "Welcome " + username + "! " + "You are successfully logged in");
+		        					MainPageStaff mainpage1 = new MainPageStaff();
+		        					mainpage1.setVisible(true);
+		        				}
+		                	}
+		                	else
+		    				{
+		    					JOptionPane.showMessageDialog(contentPane, "Invalid username or password");
+		    				}
+		                }
+		                account = accounts_input.readLine();
+		            }
+		            accounts_input.close();
+		        }
+				catch(Exception e1){
+					System.out.println("Error");
+		        }
 			}
 		});
 		btnNewButton.setBounds(178, 190, 108, 29);
 		contentPane.add(btnNewButton);
+	}
+	
+	public void setUsername(String uname){
+		username = uname;
 	}
 }
 
