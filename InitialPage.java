@@ -56,6 +56,7 @@ public class InitialPage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				LoginPage projectlogin2 = new LoginPage();
 				projectlogin2.setVisible(true);
+				
 			}
 		});
 		button.setBounds(252, 184, 153, 29);
