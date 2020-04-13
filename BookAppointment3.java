@@ -8,12 +8,14 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class BookAppointment3 extends JFrame {
+public class BookAppointment3 extends BookAppointment2 {
 
 	private JPanel contentPane;
+	public static String timeChosen;
 
 	/**
 	 * Launch the application.
@@ -48,6 +50,7 @@ public class BookAppointment3 extends JFrame {
 		JComboBox comboBox_2 = new JComboBox(time);
 		comboBox_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setTime(comboBox_2.getSelectedItem().toString());
 			}
 		});
 		comboBox_2.setBounds(334, 174, 166, 27);
@@ -58,8 +61,16 @@ public class BookAppointment3 extends JFrame {
 		contentPane.add(label_1);
 		
 		
-		JButton btnNewButton = new JButton("Next");
-		btnNewButton.setBounds(275, 346, 117, 29);
+		JButton btnNewButton = new JButton("Confirm appointment");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Appointment create = new Appointment(RegPage.username, doctorChosen, dateChosen, monthChosen, timeChosen);
+				JOptionPane.showMessageDialog(contentPane, "Your appointment was successfully booked!");
+				MainPagePatient mainpagepatient = new MainPagePatient();
+				mainpagepatient.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(240, 346, 169, 29);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Available timings");
@@ -68,4 +79,7 @@ public class BookAppointment3 extends JFrame {
 		contentPane.add(lblNewLabel);
 	}
 
+	public void setTime(String time){
+		timeChosen = time;
+	}
 }
