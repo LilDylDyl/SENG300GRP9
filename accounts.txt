@@ -1,62 +1,107 @@
-doctor
+dr_strange
 Doctor
-Dr. who
-who@gmail.ca
-doc1
-546789
+Dr. Strange
+strange@gmail.com
+12345678
+
+dr_who
+Doctor
+Dr. Who
+who@gmail.com
+12345678
+
+dr_banner
+Doctor
+Dr. Banner
+banner@yahoo.in
+12345678
 
 patient
 Patient
 Mr. Dough
 Dough@gmail.ca
 pat1
-123678
 
 nurse
-Patient
+Staff
 NurseYeah
 NY@gmail.ca
 nurse1
-987654
 
 root
 Patient
 RootDude
 root@gmail.com
 root1
-123456
 
 testUser
 Patient
 John Dough
 matty@gmail.ca
 password
-12345
 
 testUser
 Patient
 John Dough
 matty@gmail.ca
 password
-12345
 
 testUser
 Patient
 John Dough
 matty@gmail.ca
 password
-12345
 
 testUser
 Patient
 John Dough
 matty@gmail.ca
 password
-12345
 
 testUser
 Patient
 John Dough
 matty@gmail.ca
 password
+
+staff1
+Staff
+Sam Wilson
+sam@gmail.com
+12345678
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+
+patient_3
+Patient
+Patient3
+abc@gmail.com
 12345
+
+patient
+Patient
+Test
+pat@gmail.com
+patient
+
+reeyan_mak
+Patient
+Reeyan
+rm@gmail.com
+12345678
+
+pat_1
+Patient
+John Doe
+pat1@gmail.com
+12345678
