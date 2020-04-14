@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.File;
 
 import javax.swing.JOptionPane;
 
@@ -21,6 +22,7 @@ public class Account{
 
     public Account(String userN, String tpe, String nme, String mail, String pass){
         try{
+            boolean valid = true;
             FileReader reader = new FileReader("accounts.txt");
             FileWriter writer = new FileWriter("accounts.txt", true);
             BufferedReader accountsInput = new BufferedReader(reader);
@@ -28,23 +30,27 @@ public class Account{
             //The following saves everything into a String buffer and appends the one line.
             String account = accountsInput.readLine();
             while(account != null){
-                    if (account.equals(this.userName)){
+                    if (account.equals(userN)){
                         System.out.println("User already exists");
+                        valid = false;
                         break;
+                        
                     } 
 
                 account = accountsInput.readLine();
 
             }
             accountsInput.close();
-            writer.write("\n");
-            writer.write(userN + "\n");
-            writer.write(tpe + "\n");
-            writer.write(nme + "\n");
-            writer.write(mail + "\n");
-            writer.write(pass + "\n");
-            writer.close();
-
+            if (valid){
+                writer.write("\n");
+                writer.write(userN + "\n");
+                writer.write(tpe + "\n");
+                writer.write(nme + "\n");
+                writer.write(mail + "\n");
+                writer.write(pass + "\n");
+                writer.close();    
+            }
+            
 
         }catch(IOException error){
             error.printStackTrace();
@@ -378,8 +384,125 @@ public class Account{
 
     }
 
+    public static int getPositionOnDataBase(Account account) {
+		int counter = 0;
+		try {
+	        FileReader reader = new FileReader("accounts.txt");
+	        FileWriter writer = new FileWriter("accounts.txt", true);
+	        BufferedReader accountSymbols = new BufferedReader(reader);
+	        String uname = accountSymbols.readLine();
+	        while(uname != null){
+				if(uname.equals(account.getUserName())){
+                    counter++;
+                    uname = accountSymbols.readLine();
+                    if(uname.equals(account.getType())){
+                        uname = accountSymbols.readLine();
+                        if(uname.equals(account.getName())){
+                            uname = accountSymbols.readLine();
+                            if(uname.equals(account.getEMail())){
+                                uname = accountSymbols.readLine();
+                                if(uname.equals(account.getPassword())){
+                                    break;
+                                }
+                            }
+                        }
+                    }
+					//System.out.println(uname);
+				}
+				uname = accountSymbols.readLine();	
+				}
+                accountSymbols.close();
+                writer.close();
+	            
+		}catch(IOException error){
+            error.printStackTrace();
+        }
+		return counter;
+	}
+
+    public static void deleteAccount(Account account)
+	{
+        int position = getPositionOnDataBase(account);
+        int counter = 0;
+		try{
+			PrintWriter writer = new PrintWriter("temp.txt", "UTF-8");
+			FileReader reader = new FileReader("accounts.txt");
+            BufferedReader accountSymbols = new BufferedReader(reader);
+            StringBuffer inputBuffer = new StringBuffer();
+            //The following saves everything into a String buffer and appends the one line.
+			String line ="";
+			while(line != null){
+				line = accountSymbols.readLine();
+				if (line != null){
+					if(line.equals(account.getUserName())){
+                        counter += 1;
+                        if (counter == position){
+                            line = accountSymbols.readLine();
+                        }
+						if(line.equals(account.getType())){
+							line = accountSymbols.readLine();
+							if (line.equals(account.getName())){
+								line = accountSymbols.readLine();
+								if(line.equals(account.getEMail())){
+									line = accountSymbols.readLine();
+									if(line.equals(account.getPassword())){
+										line = accountSymbols.readLine();
+										line = accountSymbols.readLine();
+									}
+								}
+							}
+						} 
+					} 
+					if(line != null)
+						writer.println(line);
+				}
+            }
+			accountSymbols.close();
+			writer.close();
+
+			String osName = System.getProperty("os.name").toLowerCase();
+            boolean isWindows = osName.startsWith("windows");
+            if (isWindows) 
+            {
+                System.out.println("Knows it's windows");
+            } else {
+                File old = new File("accounts.txt");
+                //String oldPath = old.getCanonicalPath();
+                //String windowsOldPath = oldPath.replace("/", "\\\\");
+                File newFile = new File("temp.txt");
+                //String newPath = newFile.getCanonicalPath();
+                //String windowsNewPath = newPath.replace("/", "\\\\");
+                //File oldToDelete = new File(old);
+                //File newToRename = new File(newFile);
+                boolean b = old.delete();
+                boolean rename = newFile.renameTo(old);
+                System.out.println("should be swapped");
+                
+                if (rename){
+                    System.out.println("renamed");
+                } else{
+                    System.out.println("rename failed");
+                }
+                if (b){
+                    System.out.println("deleted");
+                } else {
+                    System.out.println("delete failed");
+                }
+
+            }
+			
+
+		} catch (IOException error){
+			error.printStackTrace();
+		}
+
+    
+    }
+
     public static void main(String[] args){
         Account test = new Account("testUser", "Patient", "John Dough", "matty@gmail.ca", "password");
+
+        deleteAccount(test);
 
         //test.setUserName("Matty");
         //test.setType("differentType");

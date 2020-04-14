@@ -34,53 +34,11 @@ RootDude
 root@gmail.com
 root1
 
-testUser
-Patient
-John Dough
-matty@gmail.ca
-password
-
-testUser
-Patient
-John Dough
-matty@gmail.ca
-password
-
-testUser
-Patient
-John Dough
-matty@gmail.ca
-password
-
-testUser
-Patient
-John Dough
-matty@gmail.ca
-password
-
-testUser
-Patient
-John Dough
-matty@gmail.ca
-password
-
 staff1
 Staff
 Sam Wilson
 sam@gmail.com
 12345678
-
-testUser
-Patient
-John Dough
-matty@gmail.ca
-password
-
-testUser
-Patient
-John Dough
-matty@gmail.ca
-password
 
 patient_3
 Patient
@@ -105,3 +63,4 @@ Patient
 John Doe
 pat1@gmail.com
 12345678
+
