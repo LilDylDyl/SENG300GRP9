@@ -443,13 +443,9 @@ public class Account{
 							line = accountSymbols.readLine();
 							if (line.equals(account.getName())){
 								line = accountSymbols.readLine();
-								if(line.equals(account.getEMail())){
-									line = accountSymbols.readLine();
-									if(line.equals(account.getPassword())){
-										line = accountSymbols.readLine();
-										line = accountSymbols.readLine();
-									}
-								}
+                                line = accountSymbols.readLine();
+                                line = accountSymbols.readLine();
+                                line = accountSymbols.readLine();
 							}
 						} 
 					} 
