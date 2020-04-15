@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 public class MainPageDoctor extends JFrame {
@@ -54,14 +55,6 @@ public class MainPageDoctor extends JFrame {
 		btnNewButton.setBounds(242, 136, 188, 29);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_2 = new JButton("Edit appointment");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_2.setBounds(242, 238, 188, 29);
-		contentPane.add(btnNewButton_2);
-		
 		JButton btnNewButton_3 = new JButton("Cancel appointments");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -81,5 +74,16 @@ public class MainPageDoctor extends JFrame {
 		lblNewLabel_1.setBounds(288, 44, 109, 38);
 		lblNewLabel_1.setFont(new Font("Serif", Font.ROMAN_BASELINE, 20));
 		contentPane.add(lblNewLabel_1);
+		
+		JButton btnNewButton_2 = new JButton("Log out");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(contentPane, "You are successfully logged out");
+				LoginPage loginPage = new LoginPage();
+				loginPage.setVisible(true);
+			}
+		});
+		btnNewButton_2.setBounds(574, 0, 92, 29);
+		contentPane.add(btnNewButton_2);
 	}
 }
