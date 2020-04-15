@@ -72,7 +72,7 @@ public class InitialPage extends JFrame {
 		button_1.setBounds(252, 225, 153, 29);
 		frmHospitalManagementSystem.getContentPane().add(button_1);
 
-		JLabel lblNewLabel = new JLabel("Welcome to Hospital Managemennt System");
+		JLabel lblNewLabel = new JLabel("Welcome to Hospital Management System");
 		lblNewLabel.setBounds(193, 141, 300, 16);
 		frmHospitalManagementSystem.getContentPane().add(lblNewLabel);
 
