@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
@@ -68,6 +69,17 @@ public class MainPageStaff extends JFrame {
 		lblNewLabel.setBounds(115, 90, 470, 38);
 		lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 20));
 		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton_2 = new JButton("Log out");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(contentPane, "You are successfully logged out");
+				LoginPage loginPage = new LoginPage();
+				loginPage.setVisible(true);
+			}
+		});
+		btnNewButton_2.setBounds(574, 0, 92, 29);
+		contentPane.add(btnNewButton_2);
 	}
 
 }
