@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.io.File;
 
 import javax.swing.JOptionPane;
@@ -74,14 +75,11 @@ public class Account{
 
             while (account != null){
                 if (account.equals(username)){
-                	System.out.println("Username = " + username);
                 	type = accounts_input.readLine();
-                	System.out.println("Type = " + type);
                 	account = accounts_input.readLine();
                 	account = accounts_input.readLine();
                 	verifyPassword = accounts_input.readLine();
                 	if (verifyPassword.equals(password)) {
-                		System.out.println("Password = " + verifyPassword);
                 		if (type.equals("Doctor")){
                 			return type;
                 		}
@@ -384,7 +382,7 @@ public class Account{
 
     }
 
-    public static int getPositionOnDataBase(Account account) {
+    public static int getPositionOnDataBase(String username, String type, String name, String email, String password) {
 		int counter = 0;
 		try {
 	        FileReader reader = new FileReader("accounts.txt");
@@ -392,22 +390,21 @@ public class Account{
 	        BufferedReader accountSymbols = new BufferedReader(reader);
 	        String uname = accountSymbols.readLine();
 	        while(uname != null){
-				if(uname.equals(account.getUserName())){
+				if(uname.equals(username)){
                     counter++;
                     uname = accountSymbols.readLine();
-                    if(uname.equals(account.getType())){
+                    if(uname.equals(type)){
                         uname = accountSymbols.readLine();
-                        if(uname.equals(account.getName())){
+                        if(uname.equals(name)){
                             uname = accountSymbols.readLine();
-                            if(uname.equals(account.getEMail())){
+                            if(uname.equals(email)){
                                 uname = accountSymbols.readLine();
-                                if(uname.equals(account.getPassword())){
+                                if(uname.equals(password)){
                                     break;
                                 }
                             }
                         }
                     }
-					//System.out.println(uname);
 				}
 				uname = accountSymbols.readLine();	
 				}
@@ -419,11 +416,40 @@ public class Account{
         }
 		return counter;
 	}
-
-    public static void deleteAccount(Account account)
+    public static ArrayList<String> getUserDetails(String username){
+        ArrayList<String> accountInfo = new ArrayList<String>();
+        try{
+            FileReader reader = new FileReader("accounts.txt");
+            BufferedReader accountSymbols = new BufferedReader(reader);
+            String line = accountSymbols.readLine();
+            while(line != null){
+				if(line.equals(username)){
+					accountInfo.add(line);
+					line = accountSymbols.readLine();
+					accountInfo.add(line);
+                    line = accountSymbols.readLine();
+                    accountInfo.add(line);
+                    line = accountSymbols.readLine();
+                    accountInfo.add(line);
+                    line = accountSymbols.readLine();
+                    accountInfo.add(line);
+				} 
+                line = accountSymbols.readLine();
+            }
+            accountSymbols.close();
+            
+            
+        } catch (IOException error){
+			error.printStackTrace();
+        }
+        return accountInfo;
+   }
+    
+    public static boolean deleteAccount(String username, String type, String name, String email, String password)
 	{
-        int position = getPositionOnDataBase(account);
+        int position = getPositionOnDataBase(username, type, name, email, password);
         int counter = 0;
+        boolean accountFound = false;
 		try{
 			PrintWriter writer = new PrintWriter("temp.txt", "UTF-8");
 			FileReader reader = new FileReader("accounts.txt");
@@ -434,14 +460,15 @@ public class Account{
 			while(line != null){
 				line = accountSymbols.readLine();
 				if (line != null){
-					if(line.equals(account.getUserName())){
+					if(line.equals(username)){
                         counter += 1;
                         if (counter == position){
                             line = accountSymbols.readLine();
                         }
-						if(line.equals(account.getType())){
+						if(line.equals(type)){
 							line = accountSymbols.readLine();
-							if (line.equals(account.getName())){
+							if (line.equals(name)){
+								accountFound = true;
 								line = accountSymbols.readLine();
                                 line = accountSymbols.readLine();
                                 line = accountSymbols.readLine();
@@ -463,28 +490,9 @@ public class Account{
                 System.out.println("Knows it's windows");
             } else {
                 File old = new File("accounts.txt");
-                //String oldPath = old.getCanonicalPath();
-                //String windowsOldPath = oldPath.replace("/", "\\\\");
                 File newFile = new File("temp.txt");
-                //String newPath = newFile.getCanonicalPath();
-                //String windowsNewPath = newPath.replace("/", "\\\\");
-                //File oldToDelete = new File(old);
-                //File newToRename = new File(newFile);
                 boolean b = old.delete();
                 boolean rename = newFile.renameTo(old);
-                System.out.println("should be swapped");
-                
-                if (rename){
-                    System.out.println("renamed");
-                } else{
-                    System.out.println("rename failed");
-                }
-                if (b){
-                    System.out.println("deleted");
-                } else {
-                    System.out.println("delete failed");
-                }
-
             }
 			
 
@@ -492,21 +500,11 @@ public class Account{
 			error.printStackTrace();
 		}
 
-    
+		return accountFound;
     }
 
     public static void main(String[] args){
         Account test = new Account("testUser", "Patient", "John Dough", "matty@gmail.ca", "password");
-
-        deleteAccount(test);
-
-        //test.setUserName("Matty");
-        //test.setType("differentType");
-        //test.setName("differentName");
-        //test.setEMail("new@mail.ca");
-        //test.setPassword("newpassword!!!!");
-        //test.setID(57843);
-
     }
 
 
