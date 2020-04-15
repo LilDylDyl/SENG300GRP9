@@ -17,7 +17,10 @@ import javax.swing.border.EmptyBorder;
 public class ViewAppointmentDoctor extends JFrame {
 
 	private JPanel contentPane;
-
+	String patientUsername = "", patientUsername2 = "", patientUsername3 = "", patientUsername4 = "", patientUsername5 = "", patientUsername6 = "", patientUsername7 = "", patientUsername8 = "", patientUsername9 = "", patientUsername10 = "", date = "", month = "", time = "", date2 = "", month2 = "", time2 = "", date3 = "", month3 = "", time3 = "", date4 = "", month4 = "", time4 = "", date5 = "", month5 = "", time5 = "", date6 = "", month6 = "", time6 = "", date7 = "", month7 = "", time7 = "", date8 = "", month8 = "", time8 = "", date9 = "", month9 = "", time9 = "", date10 = "", month10 = "", time10 = "";
+	int numberOfAppointments;
+	String docName = "";
+	
 	/**
 	 * Launch the application.
 	 */
@@ -47,9 +50,9 @@ public class ViewAppointmentDoctor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		String patientUsername = "", patientUsername2 = "", patientUsername3 = "", patientUsername4 = "", patientUsername5 = "", patientUsername6 = "", patientUsername7 = "", patientUsername8 = "", patientUsername9 = "", patientUsername10 = "", date = "", month = "", time = "", date2 = "", month2 = "", time2 = "", date3 = "", month3 = "", time3 = "", date4 = "", month4 = "", time4 = "", date5 = "", month5 = "", time5 = "", date6 = "", month6 = "", time6 = "", date7 = "", month7 = "", time7 = "", date8 = "", month8 = "", time8 = "", date9 = "", month9 = "", time9 = "", date10 = "", month10 = "", time10 = "";
-		String docName = ViewAppointmentDoctor.usernameToName(RegPage.username);
-		int numberOfAppointments = ViewAppointmentDoctor.numberOfAppointmentsDoctor(docName);
+		
+		docName = ViewAppointmentDoctor.usernameToName(RegPage.username);
+		numberOfAppointments = ViewAppointmentDoctor.numberOfAppointmentsDoctor(docName);
 		
 		if (numberOfAppointments != 0) {
 			JLabel lblNewLabel = new JLabel("Your appointment schedule:");
@@ -115,8 +118,18 @@ public class ViewAppointmentDoctor extends JFrame {
 					mainPageDoctor.setVisible(true);
 				}
 			});
-			btnNewButton.setBounds(265, 390, 117, 29);
+			btnNewButton.setBounds(175, 390, 117, 29);
 			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_2 = new JButton("View patient details");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ViewPatientDetails viewPatientDetails = new ViewPatientDetails();
+					viewPatientDetails.setVisible(true);
+				}
+			});
+			btnNewButton_2.setBounds(290, 390, 188, 29);
+			contentPane.add(btnNewButton_2);
 		}
 		else if (numberOfAppointments == 2) {
 			JLabel srNo1 = new JLabel("1.");
@@ -169,8 +182,18 @@ public class ViewAppointmentDoctor extends JFrame {
 					mainPageDoctor.setVisible(true);
 				}
 			});
-			btnNewButton.setBounds(265, 390, 117, 29);
+			btnNewButton.setBounds(175, 390, 117, 29);
 			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_2 = new JButton("View patient details");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ViewPatientDetails viewPatientDetails = new ViewPatientDetails();
+					viewPatientDetails.setVisible(true);
+				}
+			});
+			btnNewButton_2.setBounds(290, 390, 188, 29);
+			contentPane.add(btnNewButton_2);
 		}
 		else if (numberOfAppointments == 3) {
 			JLabel srNo1 = new JLabel("1.");
@@ -244,8 +267,18 @@ public class ViewAppointmentDoctor extends JFrame {
 					mainPageDoctor.setVisible(true);
 				}
 			});
-			btnNewButton.setBounds(265, 390, 117, 29);
+			btnNewButton.setBounds(175, 390, 117, 29);
 			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_2 = new JButton("View patient details");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ViewPatientDetails viewPatientDetails = new ViewPatientDetails();
+					viewPatientDetails.setVisible(true);
+				}
+			});
+			btnNewButton_2.setBounds(290, 390, 188, 29);
+			contentPane.add(btnNewButton_2);
 		}
 		else if (numberOfAppointments == 4) {
 			JLabel srNo1 = new JLabel("1.");
@@ -340,8 +373,18 @@ public class ViewAppointmentDoctor extends JFrame {
 					mainPageDoctor.setVisible(true);
 				}
 			});
-			btnNewButton.setBounds(265, 390, 117, 29);
+			btnNewButton.setBounds(175, 390, 117, 29);
 			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_2 = new JButton("View patient details");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ViewPatientDetails viewPatientDetails = new ViewPatientDetails();
+					viewPatientDetails.setVisible(true);
+				}
+			});
+			btnNewButton_2.setBounds(290, 390, 188, 29);
+			contentPane.add(btnNewButton_2);
 		}
 		else if (numberOfAppointments == 5) {
 			JLabel srNo1 = new JLabel("1.");
@@ -457,8 +500,18 @@ public class ViewAppointmentDoctor extends JFrame {
 					mainPageDoctor.setVisible(true);
 				}
 			});
-			btnNewButton.setBounds(265, 390, 117, 29);
+			btnNewButton.setBounds(175, 390, 117, 29);
 			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_2 = new JButton("View patient details");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ViewPatientDetails viewPatientDetails = new ViewPatientDetails();
+					viewPatientDetails.setVisible(true);
+				}
+			});
+			btnNewButton_2.setBounds(290, 390, 188, 29);
+			contentPane.add(btnNewButton_2);
 		}
 		else if (numberOfAppointments == 6) {
 			JLabel srNo1 = new JLabel("1.");
@@ -595,8 +648,18 @@ public class ViewAppointmentDoctor extends JFrame {
 					mainPageDoctor.setVisible(true);
 				}
 			});
-			btnNewButton.setBounds(265, 390, 117, 29);
+			btnNewButton.setBounds(175, 390, 117, 29);
 			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_2 = new JButton("View patient details");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ViewPatientDetails viewPatientDetails = new ViewPatientDetails();
+					viewPatientDetails.setVisible(true);
+				}
+			});
+			btnNewButton_2.setBounds(290, 390, 188, 29);
+			contentPane.add(btnNewButton_2);
 		}
 		else if (numberOfAppointments == 7) {
 			JLabel srNo1 = new JLabel("1.");
@@ -754,8 +817,18 @@ public class ViewAppointmentDoctor extends JFrame {
 					mainPageDoctor.setVisible(true);
 				}
 			});
-			btnNewButton.setBounds(265, 390, 117, 29);
+			btnNewButton.setBounds(175, 390, 117, 29);
 			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_2 = new JButton("View patient details");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ViewPatientDetails viewPatientDetails = new ViewPatientDetails();
+					viewPatientDetails.setVisible(true);
+				}
+			});
+			btnNewButton_2.setBounds(290, 390, 188, 29);
+			contentPane.add(btnNewButton_2);
 		}
 		else if (numberOfAppointments == 8) {
 			JLabel srNo1 = new JLabel("1.");
@@ -934,8 +1007,18 @@ public class ViewAppointmentDoctor extends JFrame {
 					mainPageDoctor.setVisible(true);
 				}
 			});
-			btnNewButton.setBounds(265, 390, 117, 29);
+			btnNewButton.setBounds(175, 390, 117, 29);
 			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_2 = new JButton("View patient details");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ViewPatientDetails viewPatientDetails = new ViewPatientDetails();
+					viewPatientDetails.setVisible(true);
+				}
+			});
+			btnNewButton_2.setBounds(290, 390, 188, 29);
+			contentPane.add(btnNewButton_2);
 		}
 		else if (numberOfAppointments == 9) {
 			JLabel srNo1 = new JLabel("1.");
@@ -1136,8 +1219,18 @@ public class ViewAppointmentDoctor extends JFrame {
 					mainPageDoctor.setVisible(true);
 				}
 			});
-			btnNewButton.setBounds(265, 390, 117, 29);
+			btnNewButton.setBounds(175, 390, 117, 29);
 			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_2 = new JButton("View patient details");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ViewPatientDetails viewPatientDetails = new ViewPatientDetails();
+					viewPatientDetails.setVisible(true);
+				}
+			});
+			btnNewButton_2.setBounds(290, 390, 188, 29);
+			contentPane.add(btnNewButton_2);
 		}
 		else if (numberOfAppointments == 10) {
 			JLabel srNo1 = new JLabel("1.");
@@ -1358,8 +1451,18 @@ public class ViewAppointmentDoctor extends JFrame {
 					mainPageDoctor.setVisible(true);
 				}
 			});
-			btnNewButton.setBounds(265, 390, 117, 29);
+			btnNewButton.setBounds(175, 390, 117, 29);
 			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_2 = new JButton("View patient details");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ViewPatientDetails viewPatientDetails = new ViewPatientDetails();
+					viewPatientDetails.setVisible(true);
+				}
+			});
+			btnNewButton_2.setBounds(290, 390, 188, 29);
+			contentPane.add(btnNewButton_2);
 		}
 	}
 	
@@ -1373,7 +1476,6 @@ public class ViewAppointmentDoctor extends JFrame {
 	        while(name != null){
 				if(name.equals(docName)){
 					counter++;
-					System.out.println(name);
 				}
 				name = appointmentSymbols.readLine();	
 				}
