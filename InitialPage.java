@@ -79,7 +79,3 @@ public class InitialPage extends JFrame {
 	}
 
 }
-
-		/**
-
-*/
