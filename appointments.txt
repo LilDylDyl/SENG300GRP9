@@ -1,29 +1,6 @@
 reeyan_mak
-Dr. Strange
-9
-December
-4:00 PM
-
-reeyan_mak
 Dr. Who
-2
-May
-10:30 AM
+17
+April
+10:00 AM
 
-reeyan_mak
-Dr. Who
-5
-June
-9:30 AM
-
-patient
-Dr. Banner
-21
-May
-12:30 PM
-
-patient
-Dr. Strange
-15
-July
-2:00 PM
