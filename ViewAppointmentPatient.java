@@ -59,15 +59,10 @@ public class ViewAppointmentPatient extends JFrame {
 				if(uname.equals(RegPage.username)){
 					valid = false;
 					displayAppointment(RegPage.username, numberOfAppointments);
-					System.out.println(uname);
 					docName = appointmentSymbols.readLine();
-					System.out.println(docName);
 					date = appointmentSymbols.readLine();
-					System.out.println(date);
 					month = appointmentSymbols.readLine();
-					System.out.println(month);
 					time = appointmentSymbols.readLine();
-					System.out.println(time);
 				}
 				uname = appointmentSymbols.readLine();	
 				}
@@ -96,7 +91,23 @@ public class ViewAppointmentPatient extends JFrame {
 	}
 	
 	public void displayAppointment(String username, int numberOfAppointments) {
-		String uname = "", docName = "", date = "", month = "", time = "", docName2 = "", date2= "", month2 = "", time2 = "", docName3 = "", date3 = "", month3 = "", time3 = "", docName4 = "", date4 = "", month4 = "", time4 = "";
+		String uname = "", docName = "", date = "", month = "", time = "", docName2 = "", date2= "", month2 = "", time2 = "", docName3 = "", date3 = "", month3 = "", time3 = "", docName4 = "", date4 = "", month4 = "", time4 = "", docName5 = "", date5 = "", month5 = "", time5 = "", docName6 = "", date6 = "", month6 = "", time6 = "", docName7 = "", date7 = "", month7 = "", time7 = "", docName8 = "", date8 = "", month8 = "", time8 = "", docName9 = "", date9 = "", month9 = "", time9 = "", docName10 = "", date10 = "", month10 = "", time10 = "";
+		JLabel lblNewLabel = new JLabel("Below are your confirmed appointments.");
+		lblNewLabel.setBounds(160, 30, 360, 25);
+		lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+		contentPane.add(lblNewLabel);
+
+		JLabel lblNewLabel_1 = new JLabel("Doctor");
+		lblNewLabel_1.setBounds(200, 65, 97, 16);
+		contentPane.add(lblNewLabel_1);
+
+		JLabel lblNewLabel_2 = new JLabel("Date");
+		lblNewLabel_2.setBounds(320, 65, 61, 16);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Timings");
+		lblNewLabel_3.setBounds(410, 65, 61, 16);
+		contentPane.add(lblNewLabel_3);
 		if(numberOfAppointments == 1) {
 	        try{
 	            FileReader reader = new FileReader("appointments.txt");
@@ -105,63 +116,41 @@ public class ViewAppointmentPatient extends JFrame {
 	            uname = appointmentSymbols.readLine();
 	            while(uname != null){
 					if(uname.equals(username)){
-						System.out.println(uname);
 						docName = appointmentSymbols.readLine();
-						System.out.println(docName);
 						date = appointmentSymbols.readLine();
-						System.out.println(date);
 						month = appointmentSymbols.readLine();
-						System.out.println(month);
 						time = appointmentSymbols.readLine();
-						System.out.println(time);
 					}
 					uname = appointmentSymbols.readLine();	
 					}
 	
 	                
 	                appointmentSymbols.close();
-	            //}
+	                
 	        }catch(IOException error){
 	            error.printStackTrace();
 	        }
-	        JLabel lblNewLabel = new JLabel("Below are your confirmed appointments");
-			lblNewLabel.setBounds(171, 46, 337, 16);
-			lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 20));
-			contentPane.add(lblNewLabel);
+			docName = Appointment.getAppointments(RegPage.username).get(1);
+			date = Appointment.getAppointments(RegPage.username).get(2);
+			month = Appointment.getAppointments(RegPage.username).get(3);
+			time = Appointment.getAppointments(RegPage.username).get(4);
 			
-			JLabel lblNewLabel_1 = new JLabel("Doctor:");
-			lblNewLabel_1.setBounds(252, 132, 61, 16);
-			contentPane.add(lblNewLabel_1);
+			JLabel srNo1 = new JLabel("1.");
+			srNo1.setBounds(175, 90, 20, 16);
+			contentPane.add(srNo1);
 			
-			JLabel label = new JLabel("Date:");
-			label.setBounds(252, 174, 61, 16);
-			contentPane.add(label);
+			JLabel pName1 = new JLabel(docName);
+			pName1.setBounds(200, 90, 97, 16);
+			contentPane.add(pName1);
 			
-			JLabel label_1 = new JLabel("Time:");
-			label_1.setBounds(252, 216, 61, 16);
-			contentPane.add(label_1);
+			JLabel d1 = new JLabel(date + " " + month);
+			d1.setBounds(300, 90, 150, 16);
+			contentPane.add(d1);
 			
-			JLabel lblNewLabel_2 = new JLabel(docName);
-			lblNewLabel_2.setBounds(330, 132, 134, 16);
-			contentPane.add(lblNewLabel_2);
+			JLabel t1 = new JLabel(time);
+			t1.setBounds(410, 90, 90, 16);
+			contentPane.add(t1);
 			
-			JLabel label_3 = new JLabel(date + " " + month);
-			label_3.setBounds(330, 174, 134, 16);
-			contentPane.add(label_3);
-			
-			JLabel label_4 = new JLabel(time);
-			label_4.setBounds(330, 216, 134, 16);
-			contentPane.add(label_4);
-			
-			JButton btnNewButton = new JButton("Back");
-			btnNewButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					MainPagePatient mainpagepatient = new MainPagePatient();
-					mainpagepatient.setVisible(true);
-				}
-			});
-			btnNewButton.setBounds(265, 357, 117, 29);
-			contentPane.add(btnNewButton);
 		}
 		else if(numberOfAppointments == 2) {
 			docName = Appointment.getAppointments(RegPage.username).get(1);
@@ -173,69 +162,37 @@ public class ViewAppointmentPatient extends JFrame {
 			month2 = Appointment.getAppointments(RegPage.username).get(8);
 			time2 = Appointment.getAppointments(RegPage.username).get(9);
 			
-			JLabel lblNewLabel = new JLabel("Below are your confirmed appointments");
-			lblNewLabel.setBounds(171, 40, 337, 16);
-			lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 20));
-			contentPane.add(lblNewLabel);
+			JLabel srNo1 = new JLabel("1.");
+			srNo1.setBounds(175, 90, 20, 16);
+			contentPane.add(srNo1);
 			
-			JLabel lblNewLabel_3 = new JLabel("Doctor:");
-			lblNewLabel_3.setBounds(81, 125, 109, 16);
-			contentPane.add(lblNewLabel_3);
+			JLabel srNo2 = new JLabel("2.");
+			srNo2.setBounds(175, 120, 20, 16);
+			contentPane.add(srNo2);
 			
-			JLabel label = new JLabel("Date:");
-			label.setBounds(81, 168, 109, 16);
-			contentPane.add(label);
+			JLabel pName1 = new JLabel(docName);
+			pName1.setBounds(200, 90, 97, 16);
+			contentPane.add(pName1);
 			
-			JLabel label_1 = new JLabel("Time:");
-			label_1.setBounds(81, 214, 109, 16);
-			contentPane.add(label_1);
+			JLabel pName2 = new JLabel(docName2);
+			pName2.setBounds(200, 120, 97, 16);
+			contentPane.add(pName2);
 			
-			JLabel label_2 = new JLabel(docName);
-			label_2.setBounds(195, 214, 109, 16);
-			contentPane.add(label_2);
+			JLabel d1 = new JLabel(date + " " + month);
+			d1.setBounds(300, 90, 150, 16);
+			contentPane.add(d1);
 			
-			JLabel label_3 = new JLabel(date + " " + month);
-			label_3.setBounds(195, 168, 109, 16);
-			contentPane.add(label_3);
+			JLabel d2 = new JLabel(date2 + " " + month2);
+			d2.setBounds(300, 120, 150, 16);
+			contentPane.add(d2);
 			
-			JLabel label_4 = new JLabel(time);
-			label_4.setBounds(195, 125, 109, 16);
-			contentPane.add(label_4);
+			JLabel t1 = new JLabel(time);
+			t1.setBounds(410, 90, 90, 16);
+			contentPane.add(t1);
 			
-			JLabel label_11 = new JLabel("Doctor:");
-			label_11.setBounds(400, 125, 109, 16);
-			contentPane.add(label_11);
-			
-			JLabel label_12 = new JLabel("Date:");
-			label_12.setBounds(400, 168, 109, 16);
-			contentPane.add(label_12);
-			
-			JLabel label_13 = new JLabel("Time:");
-			label_13.setBounds(400, 214, 109, 16);
-			contentPane.add(label_13);
-			
-			JLabel label_14 = new JLabel(docName2);
-			label_14.setBounds(514, 125, 109, 16);
-			contentPane.add(label_14);
-			
-			JLabel label_15 = new JLabel(date2 + " " + month2);
-			label_15.setBounds(514, 168, 109, 16);
-			contentPane.add(label_15);
-			
-			JLabel label_16 = new JLabel(time2);
-			label_16.setBounds(514, 214, 109, 16);
-			contentPane.add(label_16);
-			
-			JButton btnNewButton = new JButton("Back");
-			btnNewButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					MainPagePatient mainpagepatient = new MainPagePatient();
-					mainpagepatient.setVisible(true);
-				}
-			});
-			btnNewButton.setBounds(265, 357, 117, 29);
-			contentPane.add(btnNewButton);
-			
+			JLabel t2 = new JLabel(time2);
+			t2.setBounds(410, 120, 90, 16);
+			contentPane.add(t2);
 		}
 		else if(numberOfAppointments == 3) {
 			docName = Appointment.getAppointments(RegPage.username).get(1);
@@ -251,97 +208,55 @@ public class ViewAppointmentPatient extends JFrame {
 			month3 = Appointment.getAppointments(RegPage.username).get(13);
 			time3 = Appointment.getAppointments(RegPage.username).get(14);
 			
-			JLabel lblNewLabel = new JLabel("Below are your confirmed appointments");
-			lblNewLabel.setBounds(171, 40, 337, 16);
-			lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 20));
-			contentPane.add(lblNewLabel);
+			JLabel srNo1 = new JLabel("1.");
+			srNo1.setBounds(175, 90, 20, 16);
+			contentPane.add(srNo1);
 			
-			JLabel lblNewLabel_3 = new JLabel("Doctor:");
-			lblNewLabel_3.setBounds(11, 125, 109, 16);
-			contentPane.add(lblNewLabel_3);
+			JLabel srNo2 = new JLabel("2.");
+			srNo2.setBounds(175, 120, 20, 16);
+			contentPane.add(srNo2);
 			
-			JLabel label = new JLabel("Date:");
-			label.setBounds(11, 168, 109, 16);
-			contentPane.add(label);
+			JLabel srNo3 = new JLabel("3.");
+			srNo3.setBounds(175, 150, 20, 16);
+			contentPane.add(srNo3);
 			
-			JLabel label_1 = new JLabel("Time:");
-			label_1.setBounds(11, 214, 109, 16);
-			contentPane.add(label_1);
+			JLabel pName1 = new JLabel(docName);
+			pName1.setBounds(200, 90, 97, 16);
+			contentPane.add(pName1);
 			
-			JLabel label_2 = new JLabel(time);
-			label_2.setBounds(80, 214, 109, 16);
-			contentPane.add(label_2);
+			JLabel pName2 = new JLabel(docName2);
+			pName2.setBounds(200, 120, 97, 16);
+			contentPane.add(pName2);
 			
-			JLabel label_3 = new JLabel(date + " " + month);
-			label_3.setBounds(80, 168, 109, 16);
-			contentPane.add(label_3);
+			JLabel pName3 = new JLabel(docName3);
+			pName3.setBounds(200, 150, 97, 16);
+			contentPane.add(pName3);
 			
-			JLabel label_4 = new JLabel(docName);
-			label_4.setBounds(80, 125, 109, 16);
-			contentPane.add(label_4);
+			JLabel d1 = new JLabel(date + " " + month);
+			d1.setBounds(300, 90, 150, 16);
+			contentPane.add(d1);
 			
-			JLabel label_11 = new JLabel("Doctor:");
-			label_11.setBounds(505, 125, 109, 16);
-			contentPane.add(label_11);
+			JLabel d2 = new JLabel(date2 + " " + month2);
+			d2.setBounds(300, 120, 150, 16);
+			contentPane.add(d2);
 			
-			JLabel label_12 = new JLabel("Date:");
-			label_12.setBounds(505, 168, 109, 16);
-			contentPane.add(label_12);
+			JLabel d3 = new JLabel(date3 + " " + month3);
+			d3.setBounds(300, 150, 150, 16);
+			contentPane.add(d3);
 			
-			JLabel label_13 = new JLabel("Time:");
-			label_13.setBounds(505, 214, 109, 16);
-			contentPane.add(label_13);
+			JLabel t1 = new JLabel(time);
+			t1.setBounds(410, 90, 90, 16);
+			contentPane.add(t1);
 			
-			JLabel label_14 = new JLabel(docName2);
-			label_14.setBounds(574, 125, 109, 16);
-			contentPane.add(label_14);
+			JLabel t2 = new JLabel(time2);
+			t2.setBounds(410, 120, 90, 16);
+			contentPane.add(t2);
 			
-			JLabel label_15 = new JLabel(date2 + " " + month2);
-			label_15.setBounds(574, 168, 109, 16);
-			contentPane.add(label_15);
-			
-			JLabel label_16 = new JLabel(time2);
-			label_16.setBounds(574, 214, 109, 16);
-			contentPane.add(label_16);
-			
-			JLabel label_17 = new JLabel("Doctor:");
-			label_17.setBounds(250, 125, 109, 16);
-			contentPane.add(label_17);
-			
-			JLabel label_18 = new JLabel("Date:");
-			label_18.setBounds(250, 168, 109, 16);
-			contentPane.add(label_18);
-			
-			JLabel label_19 = new JLabel("Time:");
-			label_19.setBounds(250, 214, 109, 16);
-			contentPane.add(label_19);
-			
-			JLabel label_20 = new JLabel(docName3);
-			label_20.setBounds(320, 125, 109, 16);
-			contentPane.add(label_20);
-			
-			JLabel label_21 = new JLabel(date3 + " " + month3);
-			label_21.setBounds(320, 168, 109, 16);
-			contentPane.add(label_21);
-			
-			JLabel label_22 = new JLabel(time3);
-			label_22.setBounds(320, 214, 109, 16);
-			contentPane.add(label_22);
-			
-			
-
-			JButton btnNewButton = new JButton("Back");
-			btnNewButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					MainPagePatient mainpagepatient = new MainPagePatient();
-					mainpagepatient.setVisible(true);
-				}
-			});
-			btnNewButton.setBounds(265, 357, 117, 29);
-			contentPane.add(btnNewButton);
-			
+			JLabel t3 = new JLabel(time3);
+			t3.setBounds(410, 150, 90, 16);
+			contentPane.add(t3);
 		}
-		else if(numberOfAppointments >= 4) {
+		else if(numberOfAppointments == 4) {
 			docName = Appointment.getAppointments(RegPage.username).get(1);
 			date = Appointment.getAppointments(RegPage.username).get(2);
 			month = Appointment.getAppointments(RegPage.username).get(3);
@@ -359,117 +274,991 @@ public class ViewAppointmentPatient extends JFrame {
 			month4 = Appointment.getAppointments(RegPage.username).get(18);
 			time4 = Appointment.getAppointments(RegPage.username).get(19);
 			
-	        JLabel lblNewLabel = new JLabel("Below are your confirmed appointments");
-			lblNewLabel.setBounds(171, 20, 337, 16);
-			lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 20));
-			contentPane.add(lblNewLabel);
+			JLabel srNo1 = new JLabel("1.");
+			srNo1.setBounds(175, 90, 20, 16);
+			contentPane.add(srNo1);
 			
-			JLabel lblNewLabel_3 = new JLabel("Doctor:");
-			lblNewLabel_3.setBounds(81, 65, 109, 16);
-			contentPane.add(lblNewLabel_3);
+			JLabel srNo2 = new JLabel("2.");
+			srNo2.setBounds(175, 120, 20, 16);
+			contentPane.add(srNo2);
 			
-			JLabel label = new JLabel("Date:");
-			label.setBounds(81, 108, 109, 16);
-			contentPane.add(label);
+			JLabel srNo3 = new JLabel("3.");
+			srNo3.setBounds(175, 150, 20, 16);
+			contentPane.add(srNo3);
 			
-			JLabel label_1 = new JLabel("Time:");
-			label_1.setBounds(81, 154, 109, 16);
-			contentPane.add(label_1);
+			JLabel srNo4 = new JLabel("4.");
+			srNo4.setBounds(175, 180, 20, 16);
+			contentPane.add(srNo4);
 			
-			JLabel label_2 = new JLabel(docName);
-			label_2.setBounds(165, 154, 109, 16);
-			contentPane.add(label_2);
+			JLabel pName1 = new JLabel(docName);
+			pName1.setBounds(200, 90, 97, 16);
+			contentPane.add(pName1);
 			
-			JLabel label_3 = new JLabel(date + " " + month);
-			label_3.setBounds(165, 108, 109, 16);
-			contentPane.add(label_3);
+			JLabel pName2 = new JLabel(docName2);
+			pName2.setBounds(200, 120, 97, 16);
+			contentPane.add(pName2);
 			
-			JLabel label_4 = new JLabel(time);
-			label_4.setBounds(165, 65, 109, 16);
-			contentPane.add(label_4);
+			JLabel pName3 = new JLabel(docName3);
+			pName3.setBounds(200, 150, 97, 16);
+			contentPane.add(pName3);
 			
-			JLabel label_5 = new JLabel("Doctor:");
-			label_5.setBounds(81, 239, 109, 16);
-			contentPane.add(label_5);
+			JLabel pName4 = new JLabel(docName4);
+			pName4.setBounds(200, 180, 97, 16);
+			contentPane.add(pName4);
 			
-			JLabel label_6 = new JLabel("Date:");
-			label_6.setBounds(81, 282, 109, 16);
-			contentPane.add(label_6);
+			JLabel d1 = new JLabel(date + " " + month);
+			d1.setBounds(300, 90, 150, 16);
+			contentPane.add(d1);
 			
-			JLabel label_7 = new JLabel("Time:");
-			label_7.setBounds(81, 328, 109, 16);
-			contentPane.add(label_7);
+			JLabel d2 = new JLabel(date2 + " " + month2);
+			d2.setBounds(300, 120, 150, 16);
+			contentPane.add(d2);
 			
-			JLabel label_8 = new JLabel(docName2);
-			label_8.setBounds(165, 239, 109, 16);
-			contentPane.add(label_8);
+			JLabel d3 = new JLabel(date3 + " " + month3);
+			d3.setBounds(300, 150, 150, 16);
+			contentPane.add(d3);
 			
-			JLabel label_9 = new JLabel(date2 + " " + month2);
-			label_9.setBounds(165, 282, 109, 16);
-			contentPane.add(label_9);
+			JLabel d4 = new JLabel(date4 + " " + month4);
+			d4.setBounds(300, 180, 150, 16);
+			contentPane.add(d4);
 			
-			JLabel label_10 = new JLabel(time2);
-			label_10.setBounds(165, 328, 109, 16);
-			contentPane.add(label_10);
+			JLabel t1 = new JLabel(time);
+			t1.setBounds(410, 90, 90, 16);
+			contentPane.add(t1);
 			
-			JLabel label_11 = new JLabel("Doctor:");
-			label_11.setBounds(430, 65, 109, 16);
-			contentPane.add(label_11);
+			JLabel t2 = new JLabel(time2);
+			t2.setBounds(410, 120, 90, 16);
+			contentPane.add(t2);
 			
-			JLabel label_12 = new JLabel("Date:");
-			label_12.setBounds(430, 108, 109, 16);
-			contentPane.add(label_12);
+			JLabel t3 = new JLabel(time3);
+			t3.setBounds(410, 150, 90, 16);
+			contentPane.add(t3);
 			
-			JLabel label_13 = new JLabel("Time:");
-			label_13.setBounds(430, 154, 109, 16);
-			contentPane.add(label_13);
-			
-			JLabel label_14 = new JLabel(docName3);
-			label_14.setBounds(514, 65, 109, 16);
-			contentPane.add(label_14);
-			
-			JLabel label_15 = new JLabel(date3 + " " + month3);
-			label_15.setBounds(514, 108, 109, 16);
-			contentPane.add(label_15);
-			
-			JLabel label_16 = new JLabel(time3);
-			label_16.setBounds(514, 154, 109, 16);
-			contentPane.add(label_16);
-			
-			JLabel label_17 = new JLabel("Doctor:");
-			label_17.setBounds(430, 239, 109, 16);
-			contentPane.add(label_17);
-			
-			JLabel label_18 = new JLabel("Date:");
-			label_18.setBounds(430, 282, 109, 16);
-			contentPane.add(label_18);
-			
-			JLabel label_19 = new JLabel("Time");
-			label_19.setBounds(430, 328, 109, 16);
-			contentPane.add(label_19);
-			
-			JLabel label_20 = new JLabel(docName4);
-			label_20.setBounds(514, 239, 109, 16);
-			contentPane.add(label_20);
-			
-			JLabel label_21 = new JLabel(date4 + " " + month4);
-			label_21.setBounds(514, 282, 109, 16);
-			contentPane.add(label_21);
-			
-			JLabel label_22 = new JLabel(time4);
-			label_22.setBounds(514, 328, 109, 16);
-			contentPane.add(label_22);
-			
-			JButton btnNewButton = new JButton("Back");
-			btnNewButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					MainPagePatient mainpagepatient = new MainPagePatient();
-					mainpagepatient.setVisible(true);
-				}
-			});
-			btnNewButton.setBounds(265, 357, 117, 29);
-			contentPane.add(btnNewButton);
+			JLabel t4 = new JLabel(time4);
+			t4.setBounds(410, 180, 90, 16);
+			contentPane.add(t4);
 		}
+		else if(numberOfAppointments == 5) {
+			docName = Appointment.getAppointments(RegPage.username).get(1);
+			date = Appointment.getAppointments(RegPage.username).get(2);
+			month = Appointment.getAppointments(RegPage.username).get(3);
+			time = Appointment.getAppointments(RegPage.username).get(4);
+			docName2 = Appointment.getAppointments(RegPage.username).get(6);
+			date2 = Appointment.getAppointments(RegPage.username).get(7);
+			month2 = Appointment.getAppointments(RegPage.username).get(8);
+			time2 = Appointment.getAppointments(RegPage.username).get(9);
+			docName3 = Appointment.getAppointments(RegPage.username).get(11);
+			date3 = Appointment.getAppointments(RegPage.username).get(12);
+			month3 = Appointment.getAppointments(RegPage.username).get(13);
+			time3 = Appointment.getAppointments(RegPage.username).get(14);
+			docName4 = Appointment.getAppointments(RegPage.username).get(16);
+			date4 = Appointment.getAppointments(RegPage.username).get(17);
+			month4 = Appointment.getAppointments(RegPage.username).get(18);
+			time4 = Appointment.getAppointments(RegPage.username).get(19);
+			docName5 = Appointment.getAppointments(RegPage.username).get(21);
+			date5 = Appointment.getAppointments(RegPage.username).get(22);
+			month5 = Appointment.getAppointments(RegPage.username).get(23);
+			time5 = Appointment.getAppointments(RegPage.username).get(24);
+			
+			JLabel srNo1 = new JLabel("1.");
+			srNo1.setBounds(175, 90, 20, 16);
+			contentPane.add(srNo1);
+			
+			JLabel srNo2 = new JLabel("2.");
+			srNo2.setBounds(175, 120, 20, 16);
+			contentPane.add(srNo2);
+			
+			JLabel srNo3 = new JLabel("3.");
+			srNo3.setBounds(175, 150, 20, 16);
+			contentPane.add(srNo3);
+			
+			JLabel srNo4 = new JLabel("4.");
+			srNo4.setBounds(175, 180, 20, 16);
+			contentPane.add(srNo4);
+			
+			JLabel srNo5 = new JLabel("5.");
+			srNo5.setBounds(175, 210, 20, 16);
+			contentPane.add(srNo5);
+			
+			JLabel pName1 = new JLabel(docName);
+			pName1.setBounds(200, 90, 97, 16);
+			contentPane.add(pName1);
+			
+			JLabel pName2 = new JLabel(docName2);
+			pName2.setBounds(200, 120, 97, 16);
+			contentPane.add(pName2);
+			
+			JLabel pName3 = new JLabel(docName3);
+			pName3.setBounds(200, 150, 97, 16);
+			contentPane.add(pName3);
+			
+			JLabel pName4 = new JLabel(docName4);
+			pName4.setBounds(200, 180, 97, 16);
+			contentPane.add(pName4);
+			
+			JLabel pName5 = new JLabel(docName5);
+			pName5.setBounds(200, 210, 97, 16);
+			contentPane.add(pName5);
+			
+			JLabel d1 = new JLabel(date + " " + month);
+			d1.setBounds(300, 90, 150, 16);
+			contentPane.add(d1);
+			
+			JLabel d2 = new JLabel(date2 + " " + month2);
+			d2.setBounds(300, 120, 150, 16);
+			contentPane.add(d2);
+			
+			JLabel d3 = new JLabel(date3 + " " + month3);
+			d3.setBounds(300, 150, 150, 16);
+			contentPane.add(d3);
+			
+			JLabel d4 = new JLabel(date4 + " " + month4);
+			d4.setBounds(300, 180, 150, 16);
+			contentPane.add(d4);
+			
+			JLabel d5 = new JLabel(date5 + " " + month5);
+			d5.setBounds(300, 210, 150, 16);
+			contentPane.add(d5);
+			
+			JLabel t1 = new JLabel(time);
+			t1.setBounds(410, 90, 90, 16);
+			contentPane.add(t1);
+			
+			JLabel t2 = new JLabel(time2);
+			t2.setBounds(410, 120, 90, 16);
+			contentPane.add(t2);
+			
+			JLabel t3 = new JLabel(time3);
+			t3.setBounds(410, 150, 90, 16);
+			contentPane.add(t3);
+			
+			JLabel t4 = new JLabel(time4);
+			t4.setBounds(410, 180, 90, 16);
+			contentPane.add(t4);
+			
+			JLabel t5 = new JLabel(time5);
+			t5.setBounds(410, 210, 90, 16);
+			contentPane.add(t5);
+		}
+		else if(numberOfAppointments == 6) {
+			docName = Appointment.getAppointments(RegPage.username).get(1);
+			date = Appointment.getAppointments(RegPage.username).get(2);
+			month = Appointment.getAppointments(RegPage.username).get(3);
+			time = Appointment.getAppointments(RegPage.username).get(4);
+			docName2 = Appointment.getAppointments(RegPage.username).get(6);
+			date2 = Appointment.getAppointments(RegPage.username).get(7);
+			month2 = Appointment.getAppointments(RegPage.username).get(8);
+			time2 = Appointment.getAppointments(RegPage.username).get(9);
+			docName3 = Appointment.getAppointments(RegPage.username).get(11);
+			date3 = Appointment.getAppointments(RegPage.username).get(12);
+			month3 = Appointment.getAppointments(RegPage.username).get(13);
+			time3 = Appointment.getAppointments(RegPage.username).get(14);
+			docName4 = Appointment.getAppointments(RegPage.username).get(16);
+			date4 = Appointment.getAppointments(RegPage.username).get(17);
+			month4 = Appointment.getAppointments(RegPage.username).get(18);
+			time4 = Appointment.getAppointments(RegPage.username).get(19);
+			docName5 = Appointment.getAppointments(RegPage.username).get(21);
+			date5 = Appointment.getAppointments(RegPage.username).get(22);
+			month5 = Appointment.getAppointments(RegPage.username).get(23);
+			time5 = Appointment.getAppointments(RegPage.username).get(24);
+			docName6 = Appointment.getAppointments(RegPage.username).get(26);
+			date6 = Appointment.getAppointments(RegPage.username).get(27);
+			month6 = Appointment.getAppointments(RegPage.username).get(28);
+			time6 = Appointment.getAppointments(RegPage.username).get(29);
+			
+			JLabel srNo1 = new JLabel("1.");
+			srNo1.setBounds(175, 90, 20, 16);
+			contentPane.add(srNo1);
+			
+			JLabel srNo2 = new JLabel("2.");
+			srNo2.setBounds(175, 120, 20, 16);
+			contentPane.add(srNo2);
+			
+			JLabel srNo3 = new JLabel("3.");
+			srNo3.setBounds(175, 150, 20, 16);
+			contentPane.add(srNo3);
+			
+			JLabel srNo4 = new JLabel("4.");
+			srNo4.setBounds(175, 180, 20, 16);
+			contentPane.add(srNo4);
+			
+			JLabel srNo5 = new JLabel("5.");
+			srNo5.setBounds(175, 210, 20, 16);
+			contentPane.add(srNo5);
+			
+			JLabel srNo6 = new JLabel("6.");
+			srNo6.setBounds(175, 240, 20, 16);
+			contentPane.add(srNo6);
+			
+			JLabel pName1 = new JLabel(docName);
+			pName1.setBounds(200, 90, 97, 16);
+			contentPane.add(pName1);
+			
+			JLabel pName2 = new JLabel(docName2);
+			pName2.setBounds(200, 120, 97, 16);
+			contentPane.add(pName2);
+			
+			JLabel pName3 = new JLabel(docName3);
+			pName3.setBounds(200, 150, 97, 16);
+			contentPane.add(pName3);
+			
+			JLabel pName4 = new JLabel(docName4);
+			pName4.setBounds(200, 180, 97, 16);
+			contentPane.add(pName4);
+			
+			JLabel pName5 = new JLabel(docName5);
+			pName5.setBounds(200, 210, 97, 16);
+			contentPane.add(pName5);
+			
+			JLabel pName6 = new JLabel(docName6);
+			pName6.setBounds(200, 240, 97, 16);
+			contentPane.add(pName6);
+			
+			JLabel d1 = new JLabel(date + " " + month);
+			d1.setBounds(300, 90, 150, 16);
+			contentPane.add(d1);
+			
+			JLabel d2 = new JLabel(date2 + " " + month2);
+			d2.setBounds(300, 120, 150, 16);
+			contentPane.add(d2);
+			
+			JLabel d3 = new JLabel(date3 + " " + month3);
+			d3.setBounds(300, 150, 150, 16);
+			contentPane.add(d3);
+			
+			JLabel d4 = new JLabel(date4 + " " + month4);
+			d4.setBounds(300, 180, 150, 16);
+			contentPane.add(d4);
+			
+			JLabel d5 = new JLabel(date5 + " " + month5);
+			d5.setBounds(300, 210, 150, 16);
+			contentPane.add(d5);
+			
+			JLabel d6 = new JLabel(date6 + " " + month6);
+			d6.setBounds(300, 240, 150, 16);
+			contentPane.add(d6);
+			
+			JLabel t1 = new JLabel(time);
+			t1.setBounds(410, 90, 90, 16);
+			contentPane.add(t1);
+			
+			JLabel t2 = new JLabel(time2);
+			t2.setBounds(410, 120, 90, 16);
+			contentPane.add(t2);
+			
+			JLabel t3 = new JLabel(time3);
+			t3.setBounds(410, 150, 90, 16);
+			contentPane.add(t3);
+			
+			JLabel t4 = new JLabel(time4);
+			t4.setBounds(410, 180, 90, 16);
+			contentPane.add(t4);
+			
+			JLabel t5 = new JLabel(time5);
+			t5.setBounds(410, 210, 90, 16);
+			contentPane.add(t5);
+			
+			JLabel t6 = new JLabel(time6);
+			t6.setBounds(410, 240, 90, 16);
+			contentPane.add(t6);
+		}
+		else if(numberOfAppointments == 7) {
+			docName = Appointment.getAppointments(RegPage.username).get(1);
+			date = Appointment.getAppointments(RegPage.username).get(2);
+			month = Appointment.getAppointments(RegPage.username).get(3);
+			time = Appointment.getAppointments(RegPage.username).get(4);
+			docName2 = Appointment.getAppointments(RegPage.username).get(6);
+			date2 = Appointment.getAppointments(RegPage.username).get(7);
+			month2 = Appointment.getAppointments(RegPage.username).get(8);
+			time2 = Appointment.getAppointments(RegPage.username).get(9);
+			docName3 = Appointment.getAppointments(RegPage.username).get(11);
+			date3 = Appointment.getAppointments(RegPage.username).get(12);
+			month3 = Appointment.getAppointments(RegPage.username).get(13);
+			time3 = Appointment.getAppointments(RegPage.username).get(14);
+			docName4 = Appointment.getAppointments(RegPage.username).get(16);
+			date4 = Appointment.getAppointments(RegPage.username).get(17);
+			month4 = Appointment.getAppointments(RegPage.username).get(18);
+			time4 = Appointment.getAppointments(RegPage.username).get(19);
+			docName5 = Appointment.getAppointments(RegPage.username).get(21);
+			date5 = Appointment.getAppointments(RegPage.username).get(22);
+			month5 = Appointment.getAppointments(RegPage.username).get(23);
+			time5 = Appointment.getAppointments(RegPage.username).get(24);
+			docName6 = Appointment.getAppointments(RegPage.username).get(26);
+			date6 = Appointment.getAppointments(RegPage.username).get(27);
+			month6 = Appointment.getAppointments(RegPage.username).get(28);
+			time6 = Appointment.getAppointments(RegPage.username).get(29);
+			docName7 = Appointment.getAppointments(RegPage.username).get(31);
+			date7 = Appointment.getAppointments(RegPage.username).get(32);
+			month7 = Appointment.getAppointments(RegPage.username).get(33);
+			time7 = Appointment.getAppointments(RegPage.username).get(34);
+			
+			JLabel srNo1 = new JLabel("1.");
+			srNo1.setBounds(175, 90, 20, 16);
+			contentPane.add(srNo1);
+			
+			JLabel srNo2 = new JLabel("2.");
+			srNo2.setBounds(175, 120, 20, 16);
+			contentPane.add(srNo2);
+			
+			JLabel srNo3 = new JLabel("3.");
+			srNo3.setBounds(175, 150, 20, 16);
+			contentPane.add(srNo3);
+			
+			JLabel srNo4 = new JLabel("4.");
+			srNo4.setBounds(175, 180, 20, 16);
+			contentPane.add(srNo4);
+			
+			JLabel srNo5 = new JLabel("5.");
+			srNo5.setBounds(175, 210, 20, 16);
+			contentPane.add(srNo5);
+			
+			JLabel srNo6 = new JLabel("6.");
+			srNo6.setBounds(175, 240, 20, 16);
+			contentPane.add(srNo6);
+			
+			JLabel srNo7 = new JLabel("7.");
+			srNo7.setBounds(175, 270, 20, 16);
+			contentPane.add(srNo7);
+			
+			JLabel pName1 = new JLabel(docName);
+			pName1.setBounds(200, 90, 97, 16);
+			contentPane.add(pName1);
+			
+			JLabel pName2 = new JLabel(docName2);
+			pName2.setBounds(200, 120, 97, 16);
+			contentPane.add(pName2);
+			
+			JLabel pName3 = new JLabel(docName3);
+			pName3.setBounds(200, 150, 97, 16);
+			contentPane.add(pName3);
+			
+			JLabel pName4 = new JLabel(docName4);
+			pName4.setBounds(200, 180, 97, 16);
+			contentPane.add(pName4);
+			
+			JLabel pName5 = new JLabel(docName5);
+			pName5.setBounds(200, 210, 97, 16);
+			contentPane.add(pName5);
+			
+			JLabel pName6 = new JLabel(docName6);
+			pName6.setBounds(200, 240, 97, 16);
+			contentPane.add(pName6);
+			
+			JLabel pName7 = new JLabel(docName7);
+			pName7.setBounds(200, 270, 97, 16);
+			contentPane.add(pName7);
+			
+			JLabel d1 = new JLabel(date + " " + month);
+			d1.setBounds(300, 90, 150, 16);
+			contentPane.add(d1);
+			
+			JLabel d2 = new JLabel(date2 + " " + month2);
+			d2.setBounds(300, 120, 150, 16);
+			contentPane.add(d2);
+			
+			JLabel d3 = new JLabel(date3 + " " + month3);
+			d3.setBounds(300, 150, 150, 16);
+			contentPane.add(d3);
+			
+			JLabel d4 = new JLabel(date4 + " " + month4);
+			d4.setBounds(300, 180, 150, 16);
+			contentPane.add(d4);
+			
+			JLabel d5 = new JLabel(date5 + " " + month5);
+			d5.setBounds(300, 210, 150, 16);
+			contentPane.add(d5);
+			
+			JLabel d6 = new JLabel(date6 + " " + month6);
+			d6.setBounds(300, 240, 150, 16);
+			contentPane.add(d6);
+			
+			JLabel d7 = new JLabel(date7 + " " + month7);
+			d7.setBounds(300, 270, 150, 16);
+			contentPane.add(d7);
+			
+			JLabel t1 = new JLabel(time);
+			t1.setBounds(410, 90, 90, 16);
+			contentPane.add(t1);
+			
+			JLabel t2 = new JLabel(time2);
+			t2.setBounds(410, 120, 90, 16);
+			contentPane.add(t2);
+			
+			JLabel t3 = new JLabel(time3);
+			t3.setBounds(410, 150, 90, 16);
+			contentPane.add(t3);
+			
+			JLabel t4 = new JLabel(time4);
+			t4.setBounds(410, 180, 90, 16);
+			contentPane.add(t4);
+			
+			JLabel t5 = new JLabel(time5);
+			t5.setBounds(410, 210, 90, 16);
+			contentPane.add(t5);
+			
+			JLabel t6 = new JLabel(time6);
+			t6.setBounds(410, 240, 90, 16);
+			contentPane.add(t6);
+			
+			JLabel t7 = new JLabel(time7);
+			t7.setBounds(410, 270, 90, 16);
+			contentPane.add(t7);
+		}
+		else if(numberOfAppointments == 8) {
+			docName = Appointment.getAppointments(RegPage.username).get(1);
+			date = Appointment.getAppointments(RegPage.username).get(2);
+			month = Appointment.getAppointments(RegPage.username).get(3);
+			time = Appointment.getAppointments(RegPage.username).get(4);
+			docName2 = Appointment.getAppointments(RegPage.username).get(6);
+			date2 = Appointment.getAppointments(RegPage.username).get(7);
+			month2 = Appointment.getAppointments(RegPage.username).get(8);
+			time2 = Appointment.getAppointments(RegPage.username).get(9);
+			docName3 = Appointment.getAppointments(RegPage.username).get(11);
+			date3 = Appointment.getAppointments(RegPage.username).get(12);
+			month3 = Appointment.getAppointments(RegPage.username).get(13);
+			time3 = Appointment.getAppointments(RegPage.username).get(14);
+			docName4 = Appointment.getAppointments(RegPage.username).get(16);
+			date4 = Appointment.getAppointments(RegPage.username).get(17);
+			month4 = Appointment.getAppointments(RegPage.username).get(18);
+			time4 = Appointment.getAppointments(RegPage.username).get(19);
+			docName5 = Appointment.getAppointments(RegPage.username).get(21);
+			date5 = Appointment.getAppointments(RegPage.username).get(22);
+			month5 = Appointment.getAppointments(RegPage.username).get(23);
+			time5 = Appointment.getAppointments(RegPage.username).get(24);
+			docName6 = Appointment.getAppointments(RegPage.username).get(26);
+			date6 = Appointment.getAppointments(RegPage.username).get(27);
+			month6 = Appointment.getAppointments(RegPage.username).get(28);
+			time6 = Appointment.getAppointments(RegPage.username).get(29);
+			docName7 = Appointment.getAppointments(RegPage.username).get(31);
+			date7 = Appointment.getAppointments(RegPage.username).get(32);
+			month7 = Appointment.getAppointments(RegPage.username).get(33);
+			time7 = Appointment.getAppointments(RegPage.username).get(34);
+			docName8 = Appointment.getAppointments(RegPage.username).get(36);
+			date8 = Appointment.getAppointments(RegPage.username).get(37);
+			month8 = Appointment.getAppointments(RegPage.username).get(38);
+			time8 = Appointment.getAppointments(RegPage.username).get(39);
+			
+			JLabel srNo1 = new JLabel("1.");
+			srNo1.setBounds(175, 90, 20, 16);
+			contentPane.add(srNo1);
+			
+			JLabel srNo2 = new JLabel("2.");
+			srNo2.setBounds(175, 120, 20, 16);
+			contentPane.add(srNo2);
+			
+			JLabel srNo3 = new JLabel("3.");
+			srNo3.setBounds(175, 150, 20, 16);
+			contentPane.add(srNo3);
+			
+			JLabel srNo4 = new JLabel("4.");
+			srNo4.setBounds(175, 180, 20, 16);
+			contentPane.add(srNo4);
+			
+			JLabel srNo5 = new JLabel("5.");
+			srNo5.setBounds(175, 210, 20, 16);
+			contentPane.add(srNo5);
+			
+			JLabel srNo6 = new JLabel("6.");
+			srNo6.setBounds(175, 240, 20, 16);
+			contentPane.add(srNo6);
+			
+			JLabel srNo7 = new JLabel("7.");
+			srNo7.setBounds(175, 270, 20, 16);
+			contentPane.add(srNo7);
+			
+			JLabel srNo8 = new JLabel("8.");
+			srNo8.setBounds(175, 300, 20, 16);
+			contentPane.add(srNo8);
+			
+			JLabel pName1 = new JLabel(docName);
+			pName1.setBounds(200, 90, 97, 16);
+			contentPane.add(pName1);
+			
+			JLabel pName2 = new JLabel(docName2);
+			pName2.setBounds(200, 120, 97, 16);
+			contentPane.add(pName2);
+			
+			JLabel pName3 = new JLabel(docName3);
+			pName3.setBounds(200, 150, 97, 16);
+			contentPane.add(pName3);
+			
+			JLabel pName4 = new JLabel(docName4);
+			pName4.setBounds(200, 180, 97, 16);
+			contentPane.add(pName4);
+			
+			JLabel pName5 = new JLabel(docName5);
+			pName5.setBounds(200, 210, 97, 16);
+			contentPane.add(pName5);
+			
+			JLabel pName6 = new JLabel(docName6);
+			pName6.setBounds(200, 240, 97, 16);
+			contentPane.add(pName6);
+			
+			JLabel pName7 = new JLabel(docName7);
+			pName7.setBounds(200, 270, 97, 16);
+			contentPane.add(pName7);
+			
+			JLabel pName8 = new JLabel(docName8);
+			pName8.setBounds(200, 300, 97, 16);
+			contentPane.add(pName8);
+			
+			JLabel d1 = new JLabel(date + " " + month);
+			d1.setBounds(300, 90, 150, 16);
+			contentPane.add(d1);
+			
+			JLabel d2 = new JLabel(date2 + " " + month2);
+			d2.setBounds(300, 120, 150, 16);
+			contentPane.add(d2);
+			
+			JLabel d3 = new JLabel(date3 + " " + month3);
+			d3.setBounds(300, 150, 150, 16);
+			contentPane.add(d3);
+			
+			JLabel d4 = new JLabel(date4 + " " + month4);
+			d4.setBounds(300, 180, 150, 16);
+			contentPane.add(d4);
+			
+			JLabel d5 = new JLabel(date5 + " " + month5);
+			d5.setBounds(300, 210, 150, 16);
+			contentPane.add(d5);
+			
+			JLabel d6 = new JLabel(date6 + " " + month6);
+			d6.setBounds(300, 240, 150, 16);
+			contentPane.add(d6);
+			
+			JLabel d7 = new JLabel(date7 + " " + month7);
+			d7.setBounds(300, 270, 150, 16);
+			contentPane.add(d7);
+			
+			JLabel d8 = new JLabel(date8 + " " + month8);
+			d8.setBounds(300, 300, 150, 16);
+			contentPane.add(d8);
+			
+			JLabel t1 = new JLabel(time);
+			t1.setBounds(410, 90, 90, 16);
+			contentPane.add(t1);
+			
+			JLabel t2 = new JLabel(time2);
+			t2.setBounds(410, 120, 90, 16);
+			contentPane.add(t2);
+			
+			JLabel t3 = new JLabel(time3);
+			t3.setBounds(410, 150, 90, 16);
+			contentPane.add(t3);
+			
+			JLabel t4 = new JLabel(time4);
+			t4.setBounds(410, 180, 90, 16);
+			contentPane.add(t4);
+			
+			JLabel t5 = new JLabel(time5);
+			t5.setBounds(410, 210, 90, 16);
+			contentPane.add(t5);
+			
+			JLabel t6 = new JLabel(time6);
+			t6.setBounds(410, 240, 90, 16);
+			contentPane.add(t6);
+			
+			JLabel t7 = new JLabel(time7);
+			t7.setBounds(410, 270, 90, 16);
+			contentPane.add(t7);
+			
+			JLabel t8 = new JLabel(time8);
+			t8.setBounds(410, 300, 90, 16);
+			contentPane.add(t8);
+		}
+		else if(numberOfAppointments == 9) {
+			docName = Appointment.getAppointments(RegPage.username).get(1);
+			date = Appointment.getAppointments(RegPage.username).get(2);
+			month = Appointment.getAppointments(RegPage.username).get(3);
+			time = Appointment.getAppointments(RegPage.username).get(4);
+			docName2 = Appointment.getAppointments(RegPage.username).get(6);
+			date2 = Appointment.getAppointments(RegPage.username).get(7);
+			month2 = Appointment.getAppointments(RegPage.username).get(8);
+			time2 = Appointment.getAppointments(RegPage.username).get(9);
+			docName3 = Appointment.getAppointments(RegPage.username).get(11);
+			date3 = Appointment.getAppointments(RegPage.username).get(12);
+			month3 = Appointment.getAppointments(RegPage.username).get(13);
+			time3 = Appointment.getAppointments(RegPage.username).get(14);
+			docName4 = Appointment.getAppointments(RegPage.username).get(16);
+			date4 = Appointment.getAppointments(RegPage.username).get(17);
+			month4 = Appointment.getAppointments(RegPage.username).get(18);
+			time4 = Appointment.getAppointments(RegPage.username).get(19);
+			docName5 = Appointment.getAppointments(RegPage.username).get(21);
+			date5 = Appointment.getAppointments(RegPage.username).get(22);
+			month5 = Appointment.getAppointments(RegPage.username).get(23);
+			time5 = Appointment.getAppointments(RegPage.username).get(24);
+			docName6 = Appointment.getAppointments(RegPage.username).get(26);
+			date6 = Appointment.getAppointments(RegPage.username).get(27);
+			month6 = Appointment.getAppointments(RegPage.username).get(28);
+			time6 = Appointment.getAppointments(RegPage.username).get(29);
+			docName7 = Appointment.getAppointments(RegPage.username).get(31);
+			date7 = Appointment.getAppointments(RegPage.username).get(32);
+			month7 = Appointment.getAppointments(RegPage.username).get(33);
+			time7 = Appointment.getAppointments(RegPage.username).get(34);
+			docName8 = Appointment.getAppointments(RegPage.username).get(36);
+			date8 = Appointment.getAppointments(RegPage.username).get(37);
+			month8 = Appointment.getAppointments(RegPage.username).get(38);
+			time8 = Appointment.getAppointments(RegPage.username).get(39);
+			docName9 = Appointment.getAppointments(RegPage.username).get(41);
+			date9 = Appointment.getAppointments(RegPage.username).get(42);
+			month9 = Appointment.getAppointments(RegPage.username).get(43);
+			time9 = Appointment.getAppointments(RegPage.username).get(44);
+			
+			JLabel srNo1 = new JLabel("1.");
+			srNo1.setBounds(175, 90, 20, 16);
+			contentPane.add(srNo1);
+			
+			JLabel srNo2 = new JLabel("2.");
+			srNo2.setBounds(175, 120, 20, 16);
+			contentPane.add(srNo2);
+			
+			JLabel srNo3 = new JLabel("3.");
+			srNo3.setBounds(175, 150, 20, 16);
+			contentPane.add(srNo3);
+			
+			JLabel srNo4 = new JLabel("4.");
+			srNo4.setBounds(175, 180, 20, 16);
+			contentPane.add(srNo4);
+			
+			JLabel srNo5 = new JLabel("5.");
+			srNo5.setBounds(175, 210, 20, 16);
+			contentPane.add(srNo5);
+			
+			JLabel srNo6 = new JLabel("6.");
+			srNo6.setBounds(175, 240, 20, 16);
+			contentPane.add(srNo6);
+			
+			JLabel srNo7 = new JLabel("7.");
+			srNo7.setBounds(175, 270, 20, 16);
+			contentPane.add(srNo7);
+			
+			JLabel srNo8 = new JLabel("8.");
+			srNo8.setBounds(175, 300, 20, 16);
+			contentPane.add(srNo8);
+			
+			JLabel srNo9 = new JLabel("9.");
+			srNo9.setBounds(175, 330, 20, 16);
+			contentPane.add(srNo9);
+			
+			JLabel pName1 = new JLabel(docName);
+			pName1.setBounds(200, 90, 97, 16);
+			contentPane.add(pName1);
+			
+			JLabel pName2 = new JLabel(docName2);
+			pName2.setBounds(200, 120, 97, 16);
+			contentPane.add(pName2);
+			
+			JLabel pName3 = new JLabel(docName3);
+			pName3.setBounds(200, 150, 97, 16);
+			contentPane.add(pName3);
+			
+			JLabel pName4 = new JLabel(docName4);
+			pName4.setBounds(200, 180, 97, 16);
+			contentPane.add(pName4);
+			
+			JLabel pName5 = new JLabel(docName5);
+			pName5.setBounds(200, 210, 97, 16);
+			contentPane.add(pName5);
+			
+			JLabel pName6 = new JLabel(docName6);
+			pName6.setBounds(200, 240, 97, 16);
+			contentPane.add(pName6);
+			
+			JLabel pName7 = new JLabel(docName7);
+			pName7.setBounds(200, 270, 97, 16);
+			contentPane.add(pName7);
+			
+			JLabel pName8 = new JLabel(docName8);
+			pName8.setBounds(200, 300, 97, 16);
+			contentPane.add(pName8);
+			
+			JLabel pName9 = new JLabel(docName9);
+			pName9.setBounds(200, 330, 97, 16);
+			contentPane.add(pName9);
+			
+			JLabel d1 = new JLabel(date + " " + month);
+			d1.setBounds(300, 90, 150, 16);
+			contentPane.add(d1);
+			
+			JLabel d2 = new JLabel(date2 + " " + month2);
+			d2.setBounds(300, 120, 150, 16);
+			contentPane.add(d2);
+			
+			JLabel d3 = new JLabel(date3 + " " + month3);
+			d3.setBounds(300, 150, 150, 16);
+			contentPane.add(d3);
+			
+			JLabel d4 = new JLabel(date4 + " " + month4);
+			d4.setBounds(300, 180, 150, 16);
+			contentPane.add(d4);
+			
+			JLabel d5 = new JLabel(date5 + " " + month5);
+			d5.setBounds(300, 210, 150, 16);
+			contentPane.add(d5);
+			
+			JLabel d6 = new JLabel(date6 + " " + month6);
+			d6.setBounds(300, 240, 150, 16);
+			contentPane.add(d6);
+			
+			JLabel d7 = new JLabel(date7 + " " + month7);
+			d7.setBounds(300, 270, 150, 16);
+			contentPane.add(d7);
+			
+			JLabel d8 = new JLabel(date8 + " " + month8);
+			d8.setBounds(300, 300, 150, 16);
+			contentPane.add(d8);
+			
+			JLabel d9 = new JLabel(date9 + " " + month9);
+			d9.setBounds(300, 330, 150, 16);
+			contentPane.add(d9);
+			
+			JLabel t1 = new JLabel(time);
+			t1.setBounds(410, 90, 90, 16);
+			contentPane.add(t1);
+			
+			JLabel t2 = new JLabel(time2);
+			t2.setBounds(410, 120, 90, 16);
+			contentPane.add(t2);
+			
+			JLabel t3 = new JLabel(time3);
+			t3.setBounds(410, 150, 90, 16);
+			contentPane.add(t3);
+			
+			JLabel t4 = new JLabel(time4);
+			t4.setBounds(410, 180, 90, 16);
+			contentPane.add(t4);
+			
+			JLabel t5 = new JLabel(time5);
+			t5.setBounds(410, 210, 90, 16);
+			contentPane.add(t5);
+			
+			JLabel t6 = new JLabel(time6);
+			t6.setBounds(410, 240, 90, 16);
+			contentPane.add(t6);
+			
+			JLabel t7 = new JLabel(time7);
+			t7.setBounds(410, 270, 90, 16);
+			contentPane.add(t7);
+			
+			JLabel t8 = new JLabel(time8);
+			t8.setBounds(410, 300, 90, 16);
+			contentPane.add(t8);
+			
+			JLabel t9 = new JLabel(time9);
+			t9.setBounds(410, 330, 90, 16);
+			contentPane.add(t9);
+		}
+		else if (numberOfAppointments == 10) {
+			docName = Appointment.getAppointments(RegPage.username).get(1);
+			date = Appointment.getAppointments(RegPage.username).get(2);
+			month = Appointment.getAppointments(RegPage.username).get(3);
+			time = Appointment.getAppointments(RegPage.username).get(4);
+			docName2 = Appointment.getAppointments(RegPage.username).get(6);
+			date2 = Appointment.getAppointments(RegPage.username).get(7);
+			month2 = Appointment.getAppointments(RegPage.username).get(8);
+			time2 = Appointment.getAppointments(RegPage.username).get(9);
+			docName3 = Appointment.getAppointments(RegPage.username).get(11);
+			date3 = Appointment.getAppointments(RegPage.username).get(12);
+			month3 = Appointment.getAppointments(RegPage.username).get(13);
+			time3 = Appointment.getAppointments(RegPage.username).get(14);
+			docName4 = Appointment.getAppointments(RegPage.username).get(16);
+			date4 = Appointment.getAppointments(RegPage.username).get(17);
+			month4 = Appointment.getAppointments(RegPage.username).get(18);
+			time4 = Appointment.getAppointments(RegPage.username).get(19);
+			docName5 = Appointment.getAppointments(RegPage.username).get(21);
+			date5 = Appointment.getAppointments(RegPage.username).get(22);
+			month5 = Appointment.getAppointments(RegPage.username).get(23);
+			time5 = Appointment.getAppointments(RegPage.username).get(24);
+			docName6 = Appointment.getAppointments(RegPage.username).get(26);
+			date6 = Appointment.getAppointments(RegPage.username).get(27);
+			month6 = Appointment.getAppointments(RegPage.username).get(28);
+			time6 = Appointment.getAppointments(RegPage.username).get(29);
+			docName7 = Appointment.getAppointments(RegPage.username).get(31);
+			date7 = Appointment.getAppointments(RegPage.username).get(32);
+			month7 = Appointment.getAppointments(RegPage.username).get(33);
+			time7 = Appointment.getAppointments(RegPage.username).get(34);
+			docName8 = Appointment.getAppointments(RegPage.username).get(36);
+			date8 = Appointment.getAppointments(RegPage.username).get(37);
+			month8 = Appointment.getAppointments(RegPage.username).get(38);
+			time8 = Appointment.getAppointments(RegPage.username).get(39);
+			docName9 = Appointment.getAppointments(RegPage.username).get(41);
+			date9 = Appointment.getAppointments(RegPage.username).get(42);
+			month9 = Appointment.getAppointments(RegPage.username).get(43);
+			time9 = Appointment.getAppointments(RegPage.username).get(44);
+			docName10 = Appointment.getAppointments(RegPage.username).get(46);
+			date10 = Appointment.getAppointments(RegPage.username).get(47);
+			month10 = Appointment.getAppointments(RegPage.username).get(48);
+			time10 = Appointment.getAppointments(RegPage.username).get(49);
+			
+			JLabel srNo1 = new JLabel("1.");
+			srNo1.setBounds(175, 90, 20, 16);
+			contentPane.add(srNo1);
+			
+			JLabel srNo2 = new JLabel("2.");
+			srNo2.setBounds(175, 120, 20, 16);
+			contentPane.add(srNo2);
+			
+			JLabel srNo3 = new JLabel("3.");
+			srNo3.setBounds(175, 150, 20, 16);
+			contentPane.add(srNo3);
+			
+			JLabel srNo4 = new JLabel("4.");
+			srNo4.setBounds(175, 180, 20, 16);
+			contentPane.add(srNo4);
+			
+			JLabel srNo5 = new JLabel("5.");
+			srNo5.setBounds(175, 210, 20, 16);
+			contentPane.add(srNo5);
+			
+			JLabel srNo6 = new JLabel("6.");
+			srNo6.setBounds(175, 240, 20, 16);
+			contentPane.add(srNo6);
+			
+			JLabel srNo7 = new JLabel("7.");
+			srNo7.setBounds(175, 270, 20, 16);
+			contentPane.add(srNo7);
+			
+			JLabel srNo8 = new JLabel("8.");
+			srNo8.setBounds(175, 300, 20, 16);
+			contentPane.add(srNo8);
+			
+			JLabel srNo9 = new JLabel("9.");
+			srNo9.setBounds(175, 330, 20, 16);
+			contentPane.add(srNo9);
+			
+			JLabel srNo10 = new JLabel("10.");
+			srNo10.setBounds(175, 360, 20, 16);
+			contentPane.add(srNo10);
+			
+			JLabel pName1 = new JLabel(docName);
+			pName1.setBounds(200, 90, 97, 16);
+			contentPane.add(pName1);
+			
+			JLabel pName2 = new JLabel(docName2);
+			pName2.setBounds(200, 120, 97, 16);
+			contentPane.add(pName2);
+			
+			JLabel pName3 = new JLabel(docName3);
+			pName3.setBounds(200, 150, 97, 16);
+			contentPane.add(pName3);
+			
+			JLabel pName4 = new JLabel(docName4);
+			pName4.setBounds(200, 180, 97, 16);
+			contentPane.add(pName4);
+			
+			JLabel pName5 = new JLabel(docName5);
+			pName5.setBounds(200, 210, 97, 16);
+			contentPane.add(pName5);
+			
+			JLabel pName6 = new JLabel(docName6);
+			pName6.setBounds(200, 240, 97, 16);
+			contentPane.add(pName6);
+			
+			JLabel pName7 = new JLabel(docName7);
+			pName7.setBounds(200, 270, 97, 16);
+			contentPane.add(pName7);
+			
+			JLabel pName8 = new JLabel(docName8);
+			pName8.setBounds(200, 300, 97, 16);
+			contentPane.add(pName8);
+			
+			JLabel pName9 = new JLabel(docName9);
+			pName9.setBounds(200, 330, 97, 16);
+			contentPane.add(pName9);
+			
+			JLabel pName10 = new JLabel(docName10);
+			pName10.setBounds(200, 360, 97, 16);
+			contentPane.add(pName10);
+			
+			JLabel d1 = new JLabel(date + " " + month);
+			d1.setBounds(300, 90, 150, 16);
+			contentPane.add(d1);
+			
+			JLabel d2 = new JLabel(date2 + " " + month2);
+			d2.setBounds(300, 120, 150, 16);
+			contentPane.add(d2);
+			
+			JLabel d3 = new JLabel(date3 + " " + month3);
+			d3.setBounds(300, 150, 150, 16);
+			contentPane.add(d3);
+			
+			JLabel d4 = new JLabel(date4 + " " + month4);
+			d4.setBounds(300, 180, 150, 16);
+			contentPane.add(d4);
+			
+			JLabel d5 = new JLabel(date5 + " " + month5);
+			d5.setBounds(300, 210, 150, 16);
+			contentPane.add(d5);
+			
+			JLabel d6 = new JLabel(date6 + " " + month6);
+			d6.setBounds(300, 240, 150, 16);
+			contentPane.add(d6);
+			
+			JLabel d7 = new JLabel(date7 + " " + month7);
+			d7.setBounds(300, 270, 150, 16);
+			contentPane.add(d7);
+			
+			JLabel d8 = new JLabel(date8 + " " + month8);
+			d8.setBounds(300, 300, 150, 16);
+			contentPane.add(d8);
+			
+			JLabel d9 = new JLabel(date9 + " " + month9);
+			d9.setBounds(300, 330, 150, 16);
+			contentPane.add(d9);
+			
+			JLabel d10 = new JLabel(date10 + " " + month10);
+			d10.setBounds(300, 360, 150, 16);
+			contentPane.add(d10);
+			
+			JLabel t1 = new JLabel(time);
+			t1.setBounds(410, 90, 90, 16);
+			contentPane.add(t1);
+			
+			JLabel t2 = new JLabel(time2);
+			t2.setBounds(410, 120, 90, 16);
+			contentPane.add(t2);
+			
+			JLabel t3 = new JLabel(time3);
+			t3.setBounds(410, 150, 90, 16);
+			contentPane.add(t3);
+			
+			JLabel t4 = new JLabel(time4);
+			t4.setBounds(410, 180, 90, 16);
+			contentPane.add(t4);
+			
+			JLabel t5 = new JLabel(time5);
+			t5.setBounds(410, 210, 90, 16);
+			contentPane.add(t5);
+			
+			JLabel t6 = new JLabel(time6);
+			t6.setBounds(410, 240, 90, 16);
+			contentPane.add(t6);
+			
+			JLabel t7 = new JLabel(time7);
+			t7.setBounds(410, 270, 90, 16);
+			contentPane.add(t7);
+			
+			JLabel t8 = new JLabel(time8);
+			t8.setBounds(410, 300, 90, 16);
+			contentPane.add(t8);
+			
+			JLabel t9 = new JLabel(time9);
+			t9.setBounds(410, 330, 90, 16);
+			contentPane.add(t9);
+			
+			JLabel t10 = new JLabel(time10);
+			t10.setBounds(410, 360, 90, 16);
+			contentPane.add(t10);
+		}
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainPagePatient mainPagePatient = new MainPagePatient();
+				mainPagePatient.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(265, 390, 117, 29);
+		contentPane.add(btnNewButton);
 	}
 	
 	
@@ -483,7 +1272,6 @@ public class ViewAppointmentPatient extends JFrame {
 	        while(uname != null){
 				if(uname.equals(name)){
 					counter++;
-					System.out.println(uname);
 				}
 				uname = appointmentSymbols.readLine();	
 				}
