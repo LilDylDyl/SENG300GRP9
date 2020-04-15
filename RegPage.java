@@ -106,7 +106,7 @@ public class RegPage extends LoginPage {
 		label_5.setBounds(172, 324, 130, 16);
 		getContentPane().add(label_5);
 		
-		String[] accountTypeOptions = {"Staff Member", "Doctor", "Patient"};
+		String[] accountTypeOptions = {"--Choose--", "Staff Member", "Doctor", "Patient"};
 		JComboBox comboBox = new JComboBox(accountTypeOptions);
 
 		comboBox.addActionListener(new ActionListener() {
@@ -115,7 +115,7 @@ public class RegPage extends LoginPage {
 			}
 		});
 		comboBox.setBounds(285, 168, 159, 27);
-		comboBox.setSelectedIndex(2);
+		comboBox.setSelectedIndex(0);
 		getContentPane().add(comboBox);
 		
 		JButton btnNewButton = new JButton("Register");
