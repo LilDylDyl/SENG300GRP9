@@ -61,9 +61,7 @@ public class BookAppointment extends JFrame {
 		JComboBox comboBox_1 = new JComboBox(array);
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setMonthName(comboBox_1.getSelectedItem().toString());
-				//System.out.println(monthChosen);
-				
+				setMonthName(comboBox_1.getSelectedItem().toString());				
 				JComboBox comboBox_1 = (JComboBox)e.getSource();
 			}
 		});
