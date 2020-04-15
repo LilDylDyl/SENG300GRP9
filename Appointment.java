@@ -338,18 +338,12 @@ public class Appointment{
             }
 			appointmentSymbols.close();
 			writer.close();
-
+			
 			File old = new File("appointments.txt");
 			File newFile = new File("temp.txt");
 			boolean b = old.delete();
 			boolean rename = newFile.renameTo(old);
-			
-			if (rename){
-				System.out.println("renamed");
-			}
-			if (b){
-				System.out.println("deleted");
-			}
+
 		} catch (IOException error){
 			error.printStackTrace();
 		}
@@ -379,7 +373,6 @@ public static int getPositionOnDataBase(String username, String docName, String 
                             }
                         }
                     }
-					//System.out.println(uname);
 				}
 				uname = appointmentSymbols.readLine();	
 				}
@@ -496,7 +489,6 @@ public static int getPositionOnDataBase(String username, String docName, String 
     }
     
     public static ArrayList<String> getAppointments(String name){
-        //String name = user.getName();
         int amountOfAppointments = ViewAppointmentPatient.numberOfAppointments(name);
         ArrayList<String> appointmentInfo = new ArrayList<String>();
         try{
@@ -524,7 +516,6 @@ public static int getPositionOnDataBase(String username, String docName, String 
         } catch (IOException error){
 			error.printStackTrace();
         }
-        //System.out.println(appointmentInfo);
         return appointmentInfo;
     }
     
@@ -567,7 +558,62 @@ public static int getPositionOnDataBase(String username, String docName, String 
         } catch (IOException error){
 			error.printStackTrace();
         }
-        //System.out.println(appointmentInfo);
         return appointmentInfo;
+    }
+    
+    public static boolean checkForCancellationFee(String date, String month) {
+    	Calendar c = Calendar.getInstance(); 
+    	int dateChosen = Integer.parseInt(date);
+    	int todaysDate = c.get(Calendar.DATE);
+    	int presentMonth = c.get(Calendar.MONTH);
+    	String presentMonthName = intToMonth(presentMonth);
+    	if (month.equals(presentMonthName)) {
+    		if ((dateChosen - todaysDate) <= 1) {
+    			return true;
+    		}
+    	}
+    	else;
+    		return false;
+    }
+    
+    public static String intToMonth(int month) {
+    	String monthName = "";
+    	if (month == 0) {
+    		monthName = "January";
+    	}
+    	else if (month == 1) {
+    		monthName = "February";
+    	}
+    	else if (month == 2) {
+    		monthName = "March";
+    	}
+    	else if (month == 3) {
+    		monthName = "April";
+    	}
+    	else if (month == 4) {
+    		monthName = "May";
+    	}
+    	else if (month == 5) {
+    		monthName = "June";
+    	}
+    	else if (month == 6) {
+    		monthName = "July";
+    	}
+    	else if (month == 7) {
+    		monthName = "August";
+    	}
+    	else if (month == 8) {
+    		monthName = "September";
+    	}
+    	else if (month == 9) {
+    		monthName = "October";
+    	}
+    	else if (month == 10) {
+    		monthName = "November";
+    	}
+    	else if (month == 11) {
+    		monthName = "December";
+    	}
+    	return monthName;
     }
 }
