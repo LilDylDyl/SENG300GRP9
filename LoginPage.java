@@ -46,12 +46,15 @@ public class LoginPage extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LoginPage() {
+	public LoginPage() {		
 		setTitle("Login");
 		setResizable(false);
-		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 666, 444);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -59,20 +62,20 @@ public class LoginPage extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(75, 80, 97, 28);
+		lblUsername.setBounds(175, 135, 97, 28);
 		contentPane.add(lblUsername);
 
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(75, 134, 97, 28);
+		lblPassword.setBounds(175, 190, 97, 28);
 		contentPane.add(lblPassword);
 
 		textField = new JTextField();
-		textField.setBounds(178, 80, 166, 28);
+		textField.setBounds(278, 135, 166, 28);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
 		passwordField = new JPasswordField();
-		passwordField.setBounds(178, 134, 166, 28);
+		passwordField.setBounds(278, 190, 166, 28);
 		contentPane.add(passwordField);
 
 		JButton btnNewButton = new JButton("Login");
@@ -88,13 +91,11 @@ public class LoginPage extends JFrame {
 
 		            while (account != null){
 		                if (account.equals(username)){
-		                	System.out.println("Username = " + username);
 		                	account = accounts_input.readLine();
 		                	account = accounts_input.readLine();
 		                	account = accounts_input.readLine();
 		                	String verifyPassword = accounts_input.readLine();
 		                	if (verifyPassword.equals(pass)) {
-		                		System.out.println("Password = " + verifyPassword);
 		        				if((Account.VerifyLogin(username, pass).equals("Doctor")))
 		        				{
 		        					JOptionPane.showMessageDialog(contentPane, "Welcome " + username + "! " + "You are successfully logged in");
@@ -113,6 +114,12 @@ public class LoginPage extends JFrame {
 		        					MainPageStaff mainpage1 = new MainPageStaff();
 		        					mainpage1.setVisible(true);
 		        				}
+		        				else if((Account.VerifyLogin(username, pass).equals("Administrator")))
+		        				{
+		        					JOptionPane.showMessageDialog(contentPane, "Welcome " + username + "! " + "You are successfully logged in");
+		        					MainPageAdmin mainPageAdmin = new MainPageAdmin();
+		        					mainPageAdmin.setVisible(true);
+		        				}
 		                	}
 		                	else
 		    				{
@@ -128,7 +135,7 @@ public class LoginPage extends JFrame {
 		        }
 			}
 		});
-		btnNewButton.setBounds(178, 190, 108, 29);
+		btnNewButton.setBounds(278, 245, 108, 29);
 		contentPane.add(btnNewButton);
 	}
 	
