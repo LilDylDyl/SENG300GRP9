@@ -20,7 +20,6 @@ public class BookAppointment2 extends BookAppointment {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		System.out.println(monthChosen);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
