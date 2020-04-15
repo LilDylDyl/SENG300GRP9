@@ -1,3 +1,9 @@
+admin
+Administrator
+Mr. Admin
+admin@gmail.com
+12345678
+
 dr_strange
 Doctor
 Dr. Strange
@@ -34,11 +40,53 @@ RootDude
 root@gmail.com
 root1
 
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+
 staff1
 Staff
 Sam Wilson
 sam@gmail.com
 12345678
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
+
+testUser
+Patient
+John Dough
+matty@gmail.ca
+password
 
 patient_3
 Patient
@@ -52,14 +100,14 @@ Test
 pat@gmail.com
 patient
 
-reeyan_mak
-Patient
-Reeyan
-rm@gmail.com
-12345678
-
 pat_1
 Patient
 John Doe
 pat1@gmail.com
+12345678
+
+reeyan_mak
+Patient
+Reeyan
+rm@gmail.com
 12345678
